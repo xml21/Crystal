@@ -12,6 +12,11 @@ extern Crystal::Application* Crystal::CreateApplication();
 
 int main(int argc, char** argv)
 {
+	Crystal::Log::Init(); //TODO: Move this to engine init function
+
+	CL_CORE_LOG_WARN("Initialized Core Log");
+	CL_CLIENT_LOG_INFO("Initialized Client Log");
+
 	auto app = Crystal::CreateApplication();
 	app->Run();
 	delete app;

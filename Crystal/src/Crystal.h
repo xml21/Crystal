@@ -1,10 +1,11 @@
 #pragma once
 
 /**
-File containing all includes for engine and application classes
+File containing all global includes for application classes
 */
 
 #include "Crystal/Application.h"
+#include "Crystal/Log.h"
 
 // ------- Entry Point --------
 #include "Crystal/EntryPoint.h"
