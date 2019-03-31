@@ -18,6 +18,9 @@ project "Crystal"
 	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("Int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "Crpch.h"
+	pchsource "Crystal/src/Crpch.cpp"
+
 	files
 	{
 		"%{prj.name}/Src/**.h",

@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Crystal
 {
 	class CRYSTAL_API WindowResizeEvent : public Event

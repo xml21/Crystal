@@ -2,9 +2,6 @@
 
 #include "Crystal/Core.h"
 
-#include <functional>
-#include <string>
-
 namespace Crystal
 {
 	enum class EventType

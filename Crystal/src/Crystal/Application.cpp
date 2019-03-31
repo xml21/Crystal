@@ -1,3 +1,5 @@
+#include "Crpch.h"
+
 #include "Application.h"
 
 #include "Crystal/Events/ApplicationEvent.h"
