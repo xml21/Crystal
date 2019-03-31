@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Core.h"
+//#include "Events/Event.h"
+
+class Event;
 
 /**
  * Base application class to be defined in client

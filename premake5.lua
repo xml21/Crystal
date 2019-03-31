@@ -26,13 +26,14 @@ project "Crystal"
 
 	includedirs
 	{
+		"%{prj.name}/Src",
 		"%{prj.name}/Vendor"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "Off"
-		systemversion "10.0.17763.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -86,7 +87,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.17763.0"
+		systemversion "latest"
 
 		defines
 		{

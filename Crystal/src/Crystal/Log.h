@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 /* Core log macros */
 #define CL_CORE_LOG_CRITICAL(...)	::Crystal::Log::GetCoreLogger()->critical(__VA_ARGS__)
