@@ -10,6 +10,12 @@ workspace "Crystal"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Crystal/Vendor/GLFW/include"
+
+include "Crystal/Vendor/GLFW"
+
 project "Crystal"
 	location "Crystal"
 	kind "SharedLib"
@@ -19,7 +25,7 @@ project "Crystal"
 	objdir ("Int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "Crpch.h"
-	pchsource "Crystal/src/Crpch.cpp"
+	pchsource "Crpch.cpp"
 
 	files
 	{
@@ -30,7 +36,14 @@ project "Crystal"
 	includedirs
 	{
 		"%{prj.name}/Src",
-		"%{prj.name}/Vendor"
+		"%{prj.name}/Vendor",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

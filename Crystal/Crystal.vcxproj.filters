@@ -35,6 +35,10 @@
     <ClInclude Include="Src\Crystal\Log.h">
       <Filter>Crystal</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Window.h">
+      <Filter>Crystal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Crpch.cpp" />
@@ -44,5 +48,6 @@
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

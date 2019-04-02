@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
+#include "Window.h"
 
 class Event;
 
@@ -17,6 +19,10 @@ namespace Crystal
 		virtual ~Application();
 
 		void Run();
+
+	private:
+		std::unique_ptr<Window> mWindow;
+		bool mRunning = true;
 	};
 
 	//Meant to be defined in client

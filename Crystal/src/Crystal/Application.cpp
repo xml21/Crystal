@@ -5,13 +5,15 @@
 #include "Crystal/Events/ApplicationEvent.h"
 #include "Crystal/Log.h"
 
+#include "GLFW/glfw3.h"
+
 
 namespace Crystal
 {
 	Application::Application()
 	{
+		mWindow = std::unique_ptr<Window>(Window::Create());
 	}
-
 
 	Application::~Application()
 	{
@@ -19,10 +21,9 @@ namespace Crystal
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1200, 720);
-
-		CL_CORE_LOG_TRACE(e);
-
-		while (true);
+		while (true) 
+		{
+			mWindow->OnUpdate();
+		}
 	}
 }
