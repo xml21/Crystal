@@ -12,9 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Crystal/Vendor/GLFW/include"
+IncludeDir["GLFW"] = "Crystal/vendor/GLFW/include"
+IncludeDir["Glad"] = "Crystal/vendor/Glad/include"
 
-include "Crystal/Vendor/GLFW"
+include "Crystal/vendor/GLFW"
+include "Crystal/vendor/Glad"
 
 project "Crystal"
 	location "Crystal"
@@ -37,12 +39,14 @@ project "Crystal"
 	{
 		"%{prj.name}/Src",
 		"%{prj.name}/Vendor",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Crystal"
 		defines
 		{
 			"CL_PLATFORM_WINDOWS",
-			"CL_BUILD_DLL"
+			"CL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
