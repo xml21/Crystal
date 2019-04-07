@@ -37,6 +37,8 @@ namespace Crystal
 		friend class EventDispatcher;
 
 	public:
+		bool Handled = false;
+
 		/* virtual getter functions that must be implemented in subclasses */
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
@@ -46,9 +48,6 @@ namespace Crystal
 		virtual std::string ToString() const { return GetName(); }
 
 		inline bool IsInCategory(EventCategory Category) { return GetCategoryFlags() & Category; }
-
-	protected:
-		bool mHandled = false;
 	};
 
 	class EventDispatcher
@@ -67,7 +66,7 @@ namespace Crystal
 		{
 			if (mEvent.GetEventType() == T::GetStaticType())
 			{
-				mEvent.mHandled = func(*(T*)&mEvent);
+				mEvent.Handled = func(*(T*)&mEvent);
 				return true;
 			}
 			return false;

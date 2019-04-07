@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -158,6 +161,8 @@
     <ClInclude Include="Src\Crystal\Events\Event.h" />
     <ClInclude Include="Src\Crystal\Events\KeyEvent.h" />
     <ClInclude Include="Src\Crystal\Events\MouseEvent.h" />
+    <ClInclude Include="Src\Crystal\Layer.h" />
+    <ClInclude Include="Src\Crystal\LayerStack.h" />
     <ClInclude Include="Src\Crystal\Log.h" />
     <ClInclude Include="Src\Crystal\Window.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
@@ -167,6 +172,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Application.cpp" />
+    <ClCompile Include="Src\Crystal\LayerStack.cpp" />
     <ClCompile Include="Src\Crystal\Log.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>

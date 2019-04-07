@@ -25,6 +25,9 @@ namespace Crystal
 	{
 		while (mRunning)
 		{
+			for(std::shared_ptr<Layer> layer : mLayerStack)
+				layer->OnUpdate();
+
 			mWindow->OnUpdate();
 		}
 	}
@@ -34,7 +37,22 @@ namespace Crystal
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		CL_CORE_LOG_TRACE("{0}", e);
+		for (auto it = mLayerStack.end(); it != mLayerStack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
+	}
+
+	void Application::PushLayer(std::shared_ptr<Layer> layer)
+	{
+		mLayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(std::shared_ptr<Layer> overlay)
+	{
+		mLayerStack.PushOverlay(overlay);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
