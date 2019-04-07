@@ -7,6 +7,12 @@
     <Filter Include="Crystal\Events">
       <UniqueIdentifier>{8BE85F61-77B6-5367-604A-C48D4CB72FCC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Crpch.h" />
@@ -38,7 +44,9 @@
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Crpch.cpp" />
@@ -48,6 +56,8 @@
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

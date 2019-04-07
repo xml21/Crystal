@@ -65,9 +65,9 @@ namespace Crystal
 		template<typename T>
 		bool Dispatch(EventFn<T> func) 
 		{
-			if (mEvent.GetEventType() = T::GetStaticType())
+			if (mEvent.GetEventType() == T::GetStaticType())
 			{
-				mEvent.mHandled = func(*(T*(func)));
+				mEvent.mHandled = func(*(T*)&mEvent);
 				return true;
 			}
 			return false;
