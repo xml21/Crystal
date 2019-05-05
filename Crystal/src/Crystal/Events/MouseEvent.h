@@ -58,6 +58,7 @@ namespace Crystal
 		int mButton;
 	};
 
+	//TODO. This event class does not work as expected
 	class CRYSTAL_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
@@ -73,6 +74,7 @@ namespace Crystal
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
+	//TODO. This event class does not work as expected
 	class CRYSTAL_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:

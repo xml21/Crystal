@@ -32,7 +32,13 @@ namespace Crystal
 
 		void PushLayer(std::shared_ptr<Layer> layer);
 		void PushOverlay(std::shared_ptr<Layer> overlay);
+
+		inline Window& GetWindow() { return *mWindow; }
+
+		inline static Application& Get() { return *sInstance; }
 	private:
+		static Application* sInstance;
+
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> mWindow;

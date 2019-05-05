@@ -6,13 +6,19 @@
 #include "Crystal/Log.h"
 
 #include <glad/glad.h>
-
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+#include "Input.h"
 
 namespace Crystal
 {
+	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+	Application* Application::sInstance = nullptr;
+
 	Application::Application()
 	{
+		CL_CORE_ASSERT(!sInstance, "Application already exists!");
+		sInstance = this;
+
 		mWindow = std::unique_ptr<Window>(Window::Create());
 		mWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
@@ -48,11 +54,13 @@ namespace Crystal
 	void Application::PushLayer(std::shared_ptr<Layer> layer)
 	{
 		mLayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(std::shared_ptr<Layer> overlay)
 	{
 		mLayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)

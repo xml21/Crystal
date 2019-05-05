@@ -10,7 +10,7 @@ namespace Crystal
 		NONE = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,	//Window related event types
 		AppTick, AppUpdate, AppRender,											//Application related event types
-		KeyPressed, KeyReleased,												//Key related event types
+		KeyPressed, KeyReleased, KeyTyped,										//Key related event types
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled		//Mouse related event typesS
 	};
 
@@ -67,8 +67,10 @@ namespace Crystal
 			if (mEvent.GetEventType() == T::GetStaticType())
 			{
 				mEvent.Handled = func(*(T*)&mEvent);
+				CL_CORE_LOG_TRACE("{0}", mEvent.ToString());
 				return true;
 			}
+			CL_CORE_LOG_ERROR("{0}", mEvent.ToString());
 			return false;
 		}
 

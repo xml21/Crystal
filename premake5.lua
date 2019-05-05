@@ -14,9 +14,13 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Crystal/vendor/GLFW/include"
 IncludeDir["Glad"] = "Crystal/vendor/Glad/include"
+IncludeDir["imgui"] = "Crystal/vendor/imgui"
 
 include "Crystal/vendor/GLFW"
 include "Crystal/vendor/Glad"
+include "Crystal/vendor/imgui"
+
+startproject "Sandbox"
 
 project "Crystal"
 	location "Crystal"
@@ -40,6 +44,7 @@ project "Crystal"
 		"%{prj.name}/Src",
 		"%{prj.name}/Vendor",
 		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.Glad}"
 	}
 
@@ -47,6 +52,7 @@ project "Crystal"
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

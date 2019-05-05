@@ -38,9 +38,8 @@ namespace Crystal
 
 	class CRYSTAL_API KeyReleasedEvent : public KeyEvent
 	{
-
 	public:
-		KeyReleasedEvent(int Keycode) : KeyEvent(mKeyCode) {}
+		KeyReleasedEvent(int KeyCode) : KeyEvent(KeyCode) {}
 
 		std::string ToString() const override
 		{
@@ -50,5 +49,20 @@ namespace Crystal
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+	class CRYSTAL_API KeyTypedEvent : public KeyEvent 
+	{
+	public:
+		KeyTypedEvent(int KeyCode) : KeyEvent(KeyCode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << mKeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }

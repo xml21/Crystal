@@ -19,10 +19,12 @@ namespace Crystal
 
 		inline void SetEventCallback(const EventCallbackFunction& callback) override { mData.EventCallback = callback; };
 
+		inline void* GetNativeWindow() const { return mWindow; }
+
+	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 
-	private:
 		GLFWwindow* mWindow;
 
 		struct WindowData

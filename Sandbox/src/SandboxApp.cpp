@@ -26,6 +26,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(std::make_shared<ExampleLayer>());
+		PushOverlay(std::make_shared<Crystal::ImGuiLayer>());
 	}
 
 	~Sandbox()

@@ -10,6 +10,9 @@ namespace Crystal
 	class CRYSTAL_API Layer
 	{
 	public:
+		Layer();
+		virtual ~Layer();
+
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
 		virtual void OnUpdate() {};

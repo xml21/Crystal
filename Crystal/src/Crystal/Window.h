@@ -34,6 +34,8 @@ namespace Crystal
 
 		virtual void SetEventCallback(const EventCallbackFunction& callback) = 0;
 
+		virtual void* GetNativeWindow() const = 0;
+
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 }
