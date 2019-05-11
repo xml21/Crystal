@@ -11,12 +11,13 @@ public:
 
 	void OnUpdate() override 
 	{
-		CL_CORE_LOG_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Crystal::Event& event) override
 	{
-		CL_CORE_LOG_TRACE("ExampleLayer::OnEvent : {0}", event);
+		//Crystal key codes usage example
+		if(Crystal::Input::IsKeyPressed(CL_KEY_TAB))
+			CL_CORE_LOG_TRACE("Tab key is pressed!");
 	}
 };
 

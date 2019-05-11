@@ -97,14 +97,14 @@ namespace Crystal
 	{
 		EventDispatcher Dispatcher(event);
 
-		Dispatcher.Dispatch<KeyPressedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
-		Dispatcher.Dispatch<KeyReleasedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
-		Dispatcher.Dispatch<MouseMovedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
-		Dispatcher.Dispatch<MouseScrolledEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
-		Dispatcher.Dispatch<KeyPressedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
-		Dispatcher.Dispatch<KeyTypedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
-		Dispatcher.Dispatch<KeyReleasedEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
-		Dispatcher.Dispatch<WindowResizeEvent>(CR_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
+		Dispatcher.Dispatch<KeyPressedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
+		Dispatcher.Dispatch<KeyReleasedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
+		Dispatcher.Dispatch<MouseMovedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
+		Dispatcher.Dispatch<MouseScrolledEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
+		Dispatcher.Dispatch<KeyPressedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
+		Dispatcher.Dispatch<KeyTypedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
+		Dispatcher.Dispatch<KeyReleasedEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
+		Dispatcher.Dispatch<WindowResizeEvent>(CL_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
 	}
 
 	bool ImGuiLayer::OnMouseButtonPressedEvent(KeyPressedEvent& e)
