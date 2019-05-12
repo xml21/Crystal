@@ -12,13 +12,14 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Crystal/vendor/GLFW/include"
-IncludeDir["Glad"] = "Crystal/vendor/Glad/include"
-IncludeDir["imgui"] = "Crystal/vendor/imgui"
+IncludeDir["GLFW"] = "Crystal/Vendor/GLFW/include"
+IncludeDir["Glad"] = "Crystal/Vendor/Glad/include"
+IncludeDir["imgui"] = "Crystal/Vendor/imgui"
+IncludeDir["glm"] = "Crystal/Vendor/glm"
 
-include "Crystal/vendor/GLFW"
-include "Crystal/vendor/Glad"
-include "Crystal/vendor/imgui"
+include "Crystal/Vendor/GLFW"
+include "Crystal/Vendor/Glad"
+include "Crystal/Vendor/imgui"
 
 startproject "Sandbox"
 
@@ -36,7 +37,9 @@ project "Crystal"
 	files
 	{
 		"%{prj.name}/Src/**.h",
-		"%{prj.name}/Src/**.cpp"
+		"%{prj.name}/Src/**.cpp",
+		"%{prj.name}/Vendor/glm/glm/**.hpp",
+		"%{prj.name}/Vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -45,6 +48,7 @@ project "Crystal"
 		"%{prj.name}/Vendor",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}",
 		"%{IncludeDir.Glad}"
 	}
 
@@ -106,7 +110,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Crystal/Vendor",
-		"Crystal/Src"
+		"Crystal/Src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

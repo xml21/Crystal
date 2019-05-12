@@ -1,5 +1,4 @@
 #include "Crystal.h"
-
 /**
 * Singleton class. Client application
 */
