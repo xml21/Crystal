@@ -5,6 +5,7 @@
 #include "Window.h"
 
 #include "Crystal/Layer.h"
+#include "Crystal/ImGui/ImGuiLayer.h"
 #include "Crystal/LayerStack.h"
 #include "Crystal/Events/Event.h"
 #include "Crystal/Events/ApplicationEvent.h"
@@ -42,6 +43,8 @@ namespace Crystal
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> mWindow;
+		std::shared_ptr<ImGuiLayer> mImGuiLayer;
+
 		bool mRunning = true;
 
 		LayerStack mLayerStack;

@@ -5,7 +5,6 @@ namespace Crystal
 {
 	LayerStack::LayerStack()
 	{
-		mLayerInsertPosition = mLayers.begin();
 	}
 
 
@@ -15,7 +14,8 @@ namespace Crystal
 
 	void Crystal::LayerStack::PushLayer(std::shared_ptr<Layer> layer)
 	{
-		mLayerInsertPosition = mLayers.emplace(mLayerInsertPosition, layer); //Insert at insert position (before overlays)
+		mLayers.emplace(mLayers.begin() + mLayerInsertIndex, layer); //Insert at insert position (before overlays)
+		mLayerInsertIndex++;
 	}
 
 	void Crystal::LayerStack::PushOverlay(std::shared_ptr<Layer> overlay)
@@ -30,7 +30,7 @@ namespace Crystal
 		if (it != mLayers.end())
 		{
 			mLayers.erase(it);
-			mLayerInsertPosition--;
+			mLayerInsertIndex--;
 		}
 	}
 

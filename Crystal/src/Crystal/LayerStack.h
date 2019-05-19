@@ -33,7 +33,7 @@ namespace Crystal
 
 	private:
 		std::vector<std::shared_ptr<Layer>> mLayers; // Member variable serving as a container for layers
-		std::vector<std::shared_ptr<Layer>>::iterator mLayerInsertPosition; // Position where layers end in stack and overlays start
+		unsigned int mLayerInsertIndex = 0; // Position where layers end in stack and overlays start
 	};
 }
 

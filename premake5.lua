@@ -109,6 +109,7 @@ project "Sandbox"
 
 	includedirs
 	{
+		"Crystal/Vendor/spdlog/include",
 		"Crystal/Vendor",
 		"Crystal/Src",
 		"%{IncludeDir.glm}"

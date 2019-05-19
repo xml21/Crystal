@@ -7,6 +7,7 @@
 
 #include <glad/glad.h>
 #include "Input.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Crystal
 {
@@ -21,6 +22,9 @@ namespace Crystal
 
 		mWindow = std::unique_ptr<Window>(Window::Create());
 		mWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		mImGuiLayer = std::make_shared<ImGuiLayer>();
+		PushOverlay(mImGuiLayer);
 	}
 
 	Application::~Application()
@@ -31,8 +35,13 @@ namespace Crystal
 	{
 		while (mRunning)
 		{
-			for(std::shared_ptr<Layer> layer : mLayerStack)
+			for (std::shared_ptr<Layer> layer : mLayerStack)
 				layer->OnUpdate();
+
+			mImGuiLayer->Begin();
+			for (std::shared_ptr<Layer> layer : mLayerStack)
+				layer->OnImGuiRender();
+			mImGuiLayer->End();
 
 			mWindow->OnUpdate();
 		}

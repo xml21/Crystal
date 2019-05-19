@@ -169,11 +169,11 @@
     <ClInclude Include="Src\Crystal\Log.h" />
     <ClInclude Include="src\Crystal\MouseButtonCodes.h" />
     <ClInclude Include="Src\Crystal\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Crystal\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Crystal\Layer.cpp" />
     <ClCompile Include="Src\Crpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -182,7 +182,6 @@
     <ClCompile Include="Src\Crystal\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="Src\Crystal\LayerStack.cpp" />
     <ClCompile Include="Src\Crystal\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\imguiopenglrenderer.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
