@@ -13,9 +13,6 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\OpenGL">
-      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -47,6 +44,12 @@
     <ClInclude Include="Src\Crystal\ImGui\ImGuiLayer.h">
       <Filter>Crystal\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Input.h">
+      <Filter>Crystal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\KeyCodes.h">
+      <Filter>Crystal</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Layer.h">
       <Filter>Crystal</Filter>
     </ClInclude>
@@ -56,24 +59,32 @@
     <ClInclude Include="Src\Crystal\Log.h">
       <Filter>Crystal</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\MouseButtonCodes.h">
+      <Filter>Crystal</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Crystal\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Crystal\KeyCodes.h" />
-    <ClInclude Include="src\Crystal\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Crpch.cpp" />
     <ClCompile Include="Src\Crystal\Application.cpp">
       <Filter>Crystal</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Crystal\ImGui\ImGuiBuild.cpp">
+      <Filter>Crystal\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Crystal\ImGui\ImGuiLayer.cpp">
       <Filter>Crystal\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Layer.cpp">
+      <Filter>Crystal</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\LayerStack.cpp">
       <Filter>Crystal</Filter>
@@ -81,13 +92,11 @@
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Crystal\Layer.cpp">
-      <Filter>Crystal</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="Src\Crystal\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

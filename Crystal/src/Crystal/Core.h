@@ -5,11 +5,15 @@
  */
 
 #ifdef CL_PLATFORM_WINDOWS
+#if CL_DYNAMIC_LINK
 	#ifdef CL_BUILD_DLL
 		#define CRYSTAL_API __declspec(dllexport)
 	#else
 		#define CRYSTAL_API __declspec(dllimport)
 	#endif 
+#else
+	#define CRYSTAL_API
+#endif
 #else
 	#error Crystal Engine currently supports Windows only!
 #endif

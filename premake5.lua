@@ -1,5 +1,6 @@
 workspace "Crystal"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -21,12 +22,12 @@ include "Crystal/Vendor/GLFW"
 include "Crystal/Vendor/Glad"
 include "Crystal/Vendor/imgui"
 
-startproject "Sandbox"
-
 project "Crystal"
 	location "Crystal"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("Int/" .. outputdir .. "/%{prj.name}")
@@ -40,6 +41,11 @@ project "Crystal"
 		"%{prj.name}/Src/**.cpp",
 		"%{prj.name}/Vendor/glm/glm/**.hpp",
 		"%{prj.name}/Vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -61,8 +67,6 @@ project "Crystal"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -72,31 +76,27 @@ project "Crystal"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-		 ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
-
 	filter "configurations:Debug"
 		defines "CL_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CL_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CL_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("Bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("Int/" .. outputdir .. "/%{prj.name}")
@@ -121,8 +121,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -132,15 +130,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CL_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CL_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CL_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
