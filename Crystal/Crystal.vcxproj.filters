@@ -10,8 +10,14 @@
     <Filter Include="Crystal\ImGui">
       <UniqueIdentifier>{F138BA12-5DF9-3549-2634-7FC692B37A25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Crystal\Renderer">
+      <UniqueIdentifier>{0D46F72F-F93E-1682-2271-FB060EC9F58D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -62,8 +68,14 @@
     <ClInclude Include="Src\Crystal\MouseButtonCodes.h">
       <Filter>Crystal</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
@@ -91,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>

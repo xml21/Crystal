@@ -8,6 +8,7 @@
 #include <glad/glad.h>
 #include "Input.h"
 #include "ImGui/ImGuiLayer.h"
+#include "ImGui/imgui.h"
 
 namespace Crystal
 {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Crystal/Window.h"
+#include "Crystal/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;
 
@@ -26,6 +27,7 @@ namespace Crystal
 		virtual void Shutdown();
 
 		GLFWwindow* mWindow;
+		GraphicsContext* mContext;
 
 		struct WindowData
 		{

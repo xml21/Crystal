@@ -156,7 +156,9 @@
     <ClInclude Include="Src\Crystal\LayerStack.h" />
     <ClInclude Include="Src\Crystal\Log.h" />
     <ClInclude Include="Src\Crystal\MouseButtonCodes.h" />
+    <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h" />
     <ClInclude Include="Src\Crystal\Window.h" />
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
@@ -170,6 +172,7 @@
     <ClCompile Include="Src\Crystal\Layer.cpp" />
     <ClCompile Include="Src\Crystal\LayerStack.cpp" />
     <ClCompile Include="Src\Crystal\Log.cpp" />
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>

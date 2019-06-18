@@ -7,7 +7,7 @@
 #include "Crystal/Events/MouseEvent.h"
 #include "Crystal/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 #include "GLFW/glfw3.h"
 
 namespace Crystal
@@ -39,7 +39,7 @@ namespace Crystal
 	void Crystal::WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(mWindow);
+		mContext->SwapBuffers();
 	}
 
 	void Crystal::WindowsWindow::Init(const WindowProps & props)
@@ -59,8 +59,10 @@ namespace Crystal
 
 		mWindow = glfwCreateWindow(static_cast<int>(props.Width), static_cast<int>(props.Height),
 									mData.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(mWindow);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
+		mContext = new OpenGLContext(mWindow);
+		mContext->Init();
+
 		glfwSetWindowUserPointer(mWindow, &mData);
 
 		//GLFW event callbacks
