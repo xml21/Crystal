@@ -38,8 +38,6 @@ namespace Crystal
 
 		inline static Application& Get() { return *sInstance; }
 	private:
-		static Application* sInstance;
-
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> mWindow;
@@ -48,6 +46,11 @@ namespace Crystal
 		bool mRunning = true;
 
 		LayerStack mLayerStack;
+
+		unsigned int VertexArray, IndexBuffer, VertexBuffer;
+
+		static Application* sInstance;
+
 	};
 
 	//Meant to be defined in client

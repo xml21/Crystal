@@ -18,6 +18,11 @@ namespace Crystal
 		glfwMakeContextCurrent(mWindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		CL_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		CL_CORE_LOG_INFO("OpenGL Info:");
+		CL_CORE_LOG_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		CL_CORE_LOG_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		CL_CORE_LOG_INFO("  Version: {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()
