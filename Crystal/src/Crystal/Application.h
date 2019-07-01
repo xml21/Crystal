@@ -7,11 +7,10 @@
 #include "Crystal/Layer.h"
 #include "Crystal/ImGui/ImGuiLayer.h"
 #include "Crystal/LayerStack.h"
-#include "Crystal/Events/Event.h"
 #include "Crystal/Events/ApplicationEvent.h"
 
 #include "Crystal/Events/ApplicationEvent.h"
-
+#include "Renderer/Shader.h"
 
 class Event;
 
@@ -48,6 +47,7 @@ namespace Crystal
 		LayerStack mLayerStack;
 
 		unsigned int VertexArray, IndexBuffer, VertexBuffer;
+		std::unique_ptr<Shader> mShader;
 
 		static Application* sInstance;
 

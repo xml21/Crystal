@@ -71,6 +71,9 @@
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h">
       <Filter>Crystal\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Shader.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
     </ClInclude>
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Shader.cpp">
+      <Filter>Crystal\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>Platform\OpenGL</Filter>

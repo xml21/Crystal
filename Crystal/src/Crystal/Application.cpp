@@ -10,6 +10,8 @@
 #include "ImGui/ImGuiLayer.h"
 #include "ImGui/imgui.h"
 
+#include "Renderer/Shader.h"
+
 namespace Crystal
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -50,6 +52,31 @@ namespace Crystal
 
 		unsigned int Indices[3] = {0, 1, 2};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+
+		std::string vertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 aPosition;
+			out vec3 vPosition;
+			void main()
+			{
+				vPosition = aPosition;
+				gl_Position = vec4(aPosition, 1.0);	
+			}
+		)";
+
+		std::string fragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+			in vec3 vPosition;
+			void main()
+			{
+				color = vec4(vPosition * 0.5 + 0.5, 1.0);
+			}
+		)";
+
+		mShader = std::make_unique<Shader>(vertexSrc, fragmentSrc);
 	}
 
 	Application::~Application()
@@ -63,7 +90,10 @@ namespace Crystal
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			
+			mShader->Bind();
 			glBindVertexArray(VertexArray);
+
+			//Request draw call
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
 			for (std::shared_ptr<Layer> layer : mLayerStack)
