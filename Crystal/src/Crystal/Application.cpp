@@ -12,6 +12,9 @@
 
 #include "Renderer/Shader.h"
 
+#include "Renderer/Buffers/VertexBuffer.h"
+#include "Renderer/Buffers/IndexBuffer.h"
+
 namespace Crystal
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -32,26 +35,22 @@ namespace Crystal
 		glGenVertexArrays(1, &VertexArray);
 		glBindVertexArray(VertexArray);
 
-		glGenBuffers(1, &VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
-
 		float Vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f
 		};
 
-		//Upload data from CPU to GPU
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+		//TODO: consider using make_unique/shared
+		mVertexBuffer.reset(VertexBuffer::Create(Vertices, sizeof(Vertices)));
 
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
-		glGenBuffers(1, &IndexBuffer);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexBuffer);
+		uint32_t Indices[3] = {0, 1, 2};
 
-		unsigned int Indices[3] = {0, 1, 2};
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+		//TODO: consider using make_unique/shared
+		mIndexBuffer.reset(IndexBuffer::Create(Indices, sizeof(Indices) / sizeof(uint32_t)));
 
 		std::string vertexSrc = R"(
 			#version 330 core
@@ -94,7 +93,7 @@ namespace Crystal
 			glBindVertexArray(VertexArray);
 
 			//Request draw call
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, mIndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (std::shared_ptr<Layer> layer : mLayerStack)
 				layer->OnUpdate();
