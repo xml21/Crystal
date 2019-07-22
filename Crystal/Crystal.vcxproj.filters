@@ -92,6 +92,9 @@
     <ClInclude Include="Src\Crystal\Renderer\Shader.h">
       <Filter>Crystal\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\VertexArray.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
     </ClInclude>
@@ -102,6 +105,9 @@
       <Filter>Platform\OpenGL\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h">
@@ -146,6 +152,9 @@
     <ClCompile Include="Src\Crystal\Renderer\Shader.cpp">
       <Filter>Crystal\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\VertexArray.cpp">
+      <Filter>Crystal\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp">
       <Filter>Platform\OpenGL\Buffers</Filter>
     </ClCompile>
@@ -153,6 +162,9 @@
       <Filter>Platform\OpenGL\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp">

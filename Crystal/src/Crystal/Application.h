@@ -15,6 +15,8 @@
 #include "Renderer/Buffers/IndexBuffer.h"
 #include "Renderer/Buffers/VertexBuffer.h"
 
+#include "Renderer/VertexArray.h"
+
 class Event;
 
 /**
@@ -49,11 +51,10 @@ namespace Crystal
 
 		LayerStack mLayerStack;
 
-		unsigned int VertexArray;
-
-		std::unique_ptr<Shader> mShader;
-		std::unique_ptr<VertexBuffer> mVertexBuffer;
-		std::unique_ptr<IndexBuffer> mIndexBuffer;
+		std::shared_ptr<Shader> mShader;
+		std::shared_ptr<VertexBuffer> mVertexBuffer;
+		std::shared_ptr<IndexBuffer> mIndexBuffer;
+		std::shared_ptr<VertexArray> mVertexArray;
 
 		static Application* sInstance;
 

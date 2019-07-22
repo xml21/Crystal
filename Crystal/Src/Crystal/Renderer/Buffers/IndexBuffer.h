@@ -13,6 +13,6 @@ namespace Crystal
 		virtual uint32_t GetCount() const = 0;
 
 		//TODO: Consider adding smart pointer for reference counting
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
+		static std::shared_ptr<IndexBuffer> Create(uint32_t* indices, uint32_t size);
 	};
 }

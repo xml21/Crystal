@@ -162,10 +162,12 @@
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h" />
     <ClInclude Include="Src\Crystal\Renderer\Renderer.h" />
     <ClInclude Include="Src\Crystal\Renderer\Shader.h" />
+    <ClInclude Include="Src\Crystal\Renderer\VertexArray.h" />
     <ClInclude Include="Src\Crystal\Window.h" />
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h" />
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h" />
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
@@ -184,9 +186,11 @@
     <ClCompile Include="Src\Crystal\Renderer\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Shader.cpp" />
+    <ClCompile Include="Src\Crystal\Renderer\VertexArray.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
