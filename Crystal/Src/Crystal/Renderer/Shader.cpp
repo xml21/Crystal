@@ -5,7 +5,6 @@
 
 namespace Crystal
 {
-	
 	Shader::Shader(const std::string& VertexSrc, const std::string& FragmentSrc)
 	{
 		// Create an empty vertex shader handle

@@ -13,11 +13,17 @@
     <Filter Include="Crystal\Renderer">
       <UniqueIdentifier>{0D46F72F-F93E-1682-2271-FB060EC9F58D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Crystal\Renderer\Buffers">
+      <UniqueIdentifier>{89C22379-75E7-72F9-9E32-58898AB67117}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\OpenGL">
       <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL\Buffers">
+      <UniqueIdentifier>{9A7AE343-06B2-2BDB-0FBC-8FFE7B7252D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -68,7 +74,19 @@
     <ClInclude Include="Src\Crystal\MouseButtonCodes.h">
       <Filter>Crystal</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Buffers\BufferLayout.h">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Buffers\IndexBuffer.h">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Buffers\VertexBuffer.h">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Renderer.h">
       <Filter>Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Shader.h">
@@ -76,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h">
+      <Filter>Platform\OpenGL\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h">
+      <Filter>Platform\OpenGL\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h">
       <Filter>Platform\OpenGL</Filter>
@@ -86,11 +110,6 @@
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Renderer\Buffers\IndexBuffer.h" />
-    <ClInclude Include="Src\Crystal\Renderer\Buffers\VertexBuffer.h" />
-    <ClInclude Include="Src\Crystal\Renderer\Renderer.h" />
-    <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h" />
-    <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Crpch.cpp" />
@@ -112,8 +131,26 @@
     <ClCompile Include="Src\Crystal\Log.cpp">
       <Filter>Crystal</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Buffers\BufferLayout.cpp">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Buffers\IndexBuffer.cpp">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Buffers\VertexBuffer.cpp">
+      <Filter>Crystal\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp">
+      <Filter>Crystal\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Shader.cpp">
       <Filter>Crystal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp">
+      <Filter>Platform\OpenGL\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.cpp">
+      <Filter>Platform\OpenGL\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>Platform\OpenGL</Filter>
@@ -124,10 +161,5 @@
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\Renderer\Buffers\IndexBuffer.cpp" />
-    <ClCompile Include="Src\Crystal\Renderer\Buffers\VertexBuffer.cpp" />
-    <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp" />
-    <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp" />
-    <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.cpp" />
   </ItemGroup>
 </Project>

@@ -7,9 +7,4 @@ namespace Crystal
 	{
 
 	}
-
-	Layer::~Layer()
-	{
-
-	}
 }

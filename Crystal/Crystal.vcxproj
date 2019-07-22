@@ -156,11 +156,12 @@
     <ClInclude Include="Src\Crystal\LayerStack.h" />
     <ClInclude Include="Src\Crystal\Log.h" />
     <ClInclude Include="Src\Crystal\MouseButtonCodes.h" />
-    <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h" />
+    <ClInclude Include="Src\Crystal\Renderer\Buffers\BufferLayout.h" />
     <ClInclude Include="Src\Crystal\Renderer\Buffers\IndexBuffer.h" />
+    <ClInclude Include="Src\Crystal\Renderer\Buffers\VertexBuffer.h" />
+    <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h" />
     <ClInclude Include="Src\Crystal\Renderer\Renderer.h" />
     <ClInclude Include="Src\Crystal\Renderer\Shader.h" />
-    <ClInclude Include="Src\Crystal\Renderer\Buffers\VertexBuffer.h" />
     <ClInclude Include="Src\Crystal\Window.h" />
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h" />
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Src\Crystal\Layer.cpp" />
     <ClCompile Include="Src\Crystal\LayerStack.cpp" />
     <ClCompile Include="Src\Crystal\Log.cpp" />
+    <ClCompile Include="Src\Crystal\Renderer\Buffers\BufferLayout.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Buffers\IndexBuffer.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp" />

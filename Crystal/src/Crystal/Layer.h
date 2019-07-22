@@ -11,7 +11,7 @@ namespace Crystal
 	{
 	public:
 		Layer();
-		virtual ~Layer();
+		virtual ~Layer() = default;
 
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
