@@ -3,6 +3,7 @@
 
 #include "Platform/OpenGL/Buffers/OpenGLIndexBuffer.h"
 
+#include "../RendererAPI.h"
 #include "../Renderer.h"
 
 namespace Crystal
@@ -11,8 +12,8 @@ namespace Crystal
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::NONE:		CL_CORE_ASSERT(false, "RendererAPI::None is currently not supported"); return nullptr;
-			case RendererAPI::OpenGL:	return std::make_shared<OpenGLIndexBuffer>(indices, size);
+			case API::NONE:		CL_CORE_ASSERT(false, "RendererAPI::None is currently not supported"); return nullptr;
+			case API::OpenGL:	return std::make_shared<OpenGLIndexBuffer>(indices, size);
 		}
 
 		CL_CORE_ASSERT(false, "Unknown RendererAPI!");

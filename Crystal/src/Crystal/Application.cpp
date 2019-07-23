@@ -5,17 +5,18 @@
 #include "Crystal/Events/ApplicationEvent.h"
 #include "Crystal/Log.h"
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include "Input.h"
 #include "ImGui/ImGuiLayer.h"
 #include "ImGui/imgui.h"
 
 #include "Renderer/Shader.h"
 #include "Renderer/VertexArray.h"
-
 #include "Renderer/Buffers/VertexBuffer.h"
 #include "Renderer/Buffers/IndexBuffer.h"
 #include "Renderer/Buffers/BufferLayout.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/RenderCommand.h"
 
 namespace Crystal
 {
@@ -97,14 +98,16 @@ namespace Crystal
 	{
 		while (mRunning)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 			
 			mShader->Bind();
-			mVertexArray->Bind();
 
-			//Request draw call
-			glDrawElements(GL_TRIANGLES, mIndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(mVertexArray); //Request draw call
+			
+			Renderer::EndScene();
 
 			for (std::shared_ptr<Layer> layer : mLayerStack)
 				layer->OnUpdate();

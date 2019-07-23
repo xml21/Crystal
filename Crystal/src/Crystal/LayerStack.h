@@ -25,7 +25,7 @@ namespace Crystal
 		void PushLayer(std::shared_ptr<Layer> layer);
 		void PushOverlay(std::shared_ptr<Layer> overlay);
 		void PopLayer(std::shared_ptr<Layer> layer);
-		void PopOverlay(std::shared_ptr<Layer> layer);
+		void PopOverlay(std::shared_ptr<Layer> overlay);
 
 		/* begin() & end() methods implementation allowing for range base interation over layers */
 		std::vector<std::shared_ptr<Layer>>::iterator begin() { return mLayers.begin(); }

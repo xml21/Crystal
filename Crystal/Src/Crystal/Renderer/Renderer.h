@@ -1,22 +1,22 @@
 #pragma once
+#include "RendererAPI.h"
+
+class RenderCommand;
+class VertexArray;
 
 namespace Crystal
 {
-	enum class RendererAPI
-	{
-		NONE = 0,
-		OpenGL = 1,
-		DirectX = 2,
-		Vulkan = 3
-	};
-
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetAPI() { return sRendererAPI; };
-		static void SetAPI(const RendererAPI NewAPI) { sRendererAPI = NewAPI; }
 
-	private:
-		static RendererAPI sRendererAPI;
+		/* TODO: add parameters */
+		static void BeginScene();
+		static void EndScene();
+		/* TODO: add parameters */
+
+		static void Submit(const std::shared_ptr<VertexArray>& vertexarray);
+
+		inline static API GetAPI() { return RendererAPI::GetAPI(); };
 	};
 }

@@ -26,20 +26,23 @@ namespace Crystal
 	void Crystal::LayerStack::PopLayer(std::shared_ptr<Layer> layer)
 	{
 		auto it = std::find(mLayers.begin(), mLayers.end(), layer);
-
 		if (it != mLayers.end())
 		{
+			layer->OnDetach();
 			mLayers.erase(it);
 			mLayerInsertIndex--;
 		}
 	}
 
-	void Crystal::LayerStack::PopOverlay(std::shared_ptr<Layer> layer)
+	void Crystal::LayerStack::PopOverlay(std::shared_ptr<Layer> overlay)
 	{
-		auto it = std::find(mLayers.begin(), mLayers.end(), layer);
+		auto it = std::find(mLayers.begin(), mLayers.end(), overlay);
 
 		if (it != mLayers.end())
+		{
+			overlay->OnDetach();
 			mLayers.erase(it);
+		}
 	}
 
 }

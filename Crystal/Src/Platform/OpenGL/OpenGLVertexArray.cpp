@@ -2,7 +2,7 @@
 
 #include "OpenGLVertexArray.h"
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 
 namespace Crystal
 {

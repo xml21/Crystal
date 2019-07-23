@@ -10,8 +10,8 @@ namespace Crystal
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::NONE:		CL_CORE_ASSERT(false, "RendererAPI::None is currently not supported"); return nullptr;
-		case RendererAPI::OpenGL:	return std::make_shared<OpenGLVertexArray>();
+		case API::NONE:		CL_CORE_ASSERT(false, "RendererAPI::None is currently not supported"); return nullptr;
+		case API::OpenGL:	return std::make_shared<OpenGLVertexArray>();
 		}
 
 		CL_CORE_ASSERT(false, "Unknown RendererAPI!");

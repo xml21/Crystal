@@ -116,6 +116,15 @@
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\RendererAPI.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\RenderCommand.h">
+      <Filter>Crystal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Crpch.cpp" />
@@ -172,6 +181,15 @@
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\RenderCommand.cpp">
+      <Filter>Crystal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\RendererAPI.cpp">
+      <Filter>Crystal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
