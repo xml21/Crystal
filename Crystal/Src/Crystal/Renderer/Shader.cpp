@@ -3,6 +3,8 @@
 
 #include "glad/glad.h"
 
+#include "glm/gtc/type_ptr.hpp"
+
 namespace Crystal
 {
 	Shader::Shader(const std::string& VertexSrc, const std::string& FragmentSrc)
@@ -125,4 +127,10 @@ namespace Crystal
 		glUseProgram(0);
 	}
 
+	void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		GLint Location = glGetUniformLocation(mRendererID, name.c_str());
+
+		glUniformMatrix4fv(Location, 1, GL_FALSE, glm::value_ptr(matrix));
+	}
 }
