@@ -1,23 +1,22 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
 #include "Window.h"
+
+#include "Events/Event.h"
+#include "Events/KeyEvent.h"
+#include "Events/ApplicationEvent.h"
 
 #include "Crystal/Layer.h"
 #include "Crystal/ImGui/ImGuiLayer.h"
 #include "Crystal/LayerStack.h"
 
-#include "Crystal/Events/ApplicationEvent.h"
-
 #include "Renderer/Shader.h"
-
+#include "Renderer/VertexArray.h"
 #include "Renderer/Buffers/IndexBuffer.h"
 #include "Renderer/Buffers/VertexBuffer.h"
-
-#include "Renderer/VertexArray.h"
-
 #include "Renderer/Cameras/OrthographicCamera.h"
+
 
 class Event;
 
@@ -45,6 +44,7 @@ namespace Crystal
 		inline static Application& Get() { return *sInstance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnKeyPressed(KeyPressedEvent& e);
 
 		std::unique_ptr<Window> mWindow;
 		std::shared_ptr<ImGuiLayer> mImGuiLayer;
@@ -60,7 +60,6 @@ namespace Crystal
 		OrthographicCamera mCamera;
 
 		static Application* sInstance;
-
 	};
 
 	//Meant to be defined in client

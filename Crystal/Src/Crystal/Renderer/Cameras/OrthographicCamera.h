@@ -18,7 +18,7 @@ namespace Crystal
 			void SetProjectionMatrix(glm::mat4 val) { mProjectionMatrix = val; }
 			void SetViewMatrix(glm::mat4 val) { mViewMatrix = val; }
 			void SetViewProjectionMatrix(glm::mat4 val) { mViewProjectionMatrix = val; }
-			void SetPosition(glm::vec3 val) { mPosition = val; SetViewProjectionMatrixRotation();}
+			void SetPosition(glm::vec3 val) { mPosition = val; SetViewProjectionMatrixPosition();}
 			void SetRotation(float val) { mRotation = val; SetViewProjectionMatrixRotation();}
 
 	private:

@@ -6,7 +6,10 @@
 #include "Crystal/Log.h"
 
 #include "glad/glad.h"
+
 #include "Input.h"
+#include "KeyCodes.h"
+
 #include "ImGui/ImGuiLayer.h"
 #include "ImGui/imgui.h"
 
@@ -126,6 +129,7 @@ namespace Crystal
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(OnKeyPressed));
 
 		for (auto it = mLayerStack.end(); it != mLayerStack.begin(); )
 		{
@@ -151,6 +155,19 @@ namespace Crystal
 	{
 		mRunning = false;
 		return true;
+	}
+
+	bool Application::OnKeyPressed(KeyPressedEvent& e)
+	{
+		switch (e.GetKeyCode())
+		{
+			case CL_KEY_A:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.0f,		0.1f,	0.0f)); return true;
+			case CL_KEY_D:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.0f,		-0.1f,	0.0f)); return true;
+			case CL_KEY_S:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(-0.1f,	0.0f,	0.0f)); return true;
+			case CL_KEY_W:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.1f,		0.0f,	0.0f)); return true;
+		}
+
+		return false;
 	}
 
 }

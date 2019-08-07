@@ -10,6 +10,9 @@ namespace Crystal
 		: mProjectionMatrix(glm::ortho(left, right, bottom, top)), mViewMatrix(1.0f)
 	{
 		mViewProjectionMatrix = mViewMatrix * mProjectionMatrix;
+
+		SetPosition({ 0.0f, 0.0f, 0.0f });
+		SetRotation(40.0f);
 	}
 
 	void OrthographicCamera::SetViewProjectionMatrixRotation()
