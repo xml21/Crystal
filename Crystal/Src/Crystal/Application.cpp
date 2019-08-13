@@ -28,7 +28,6 @@ namespace Crystal
 	Application* Application::sInstance = nullptr;
 
 	Application::Application()
-		: mCamera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		CL_CORE_ASSERT(!sInstance, "Application already exists!");
 		sInstance = this;
@@ -38,81 +37,12 @@ namespace Crystal
 
 		mImGuiLayer = std::make_shared<ImGuiLayer>();
 		PushOverlay(mImGuiLayer);
-
-		mVertexArray = VertexArray::Create();
-
-		float Vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
-		};
-
-		mVertexBuffer = VertexBuffer::Create(Vertices, sizeof(Vertices));
-
-		BufferLayout Layout = {
-			{ShaderDataType::Float3, "aPosition"},
-			{ShaderDataType::Float4, "aColor"}
-		};
-
-		mVertexBuffer->SetLayout(Layout);
-		mVertexArray->AddVertexBuffer(mVertexBuffer);
-
-		//Index Buffer
-		uint32_t Indices[3] = { 0, 1, 2 };
-
-
-		mIndexBuffer = IndexBuffer::Create(Indices, sizeof(Indices) / sizeof(uint32_t));
-		mVertexArray->SetIndexBuffer(mIndexBuffer);
-
-		std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 aPosition;
-			layout(location = 1) in vec4 aColor;
-
-			uniform mat4 u_ViewProjection;
-
-			out vec3 vPosition;
-			out vec4 vColor;
-
-			void main()
-			{
-				vPosition = aPosition;
-				vColor = aColor;
-				gl_Position = u_ViewProjection * vec4(aPosition, 1.0);	
-			}
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 vPosition;
-			in vec4 vColor;
-
-			void main()
-			{
-				color = vColor;
-			}
-		)";
-
-		mShader = std::make_unique<Shader>(vertexSrc, fragmentSrc);
 	}
 
 	void Application::Run()
 	{
 		while (mRunning)
 		{
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-
-			Renderer::BeginScene(mCamera);
-			
-			Renderer::Submit(mShader, mVertexArray); //Request draw call
-			
-			Renderer::EndScene();
-
 			for (std::shared_ptr<Layer> layer : mLayerStack)
 				layer->OnUpdate();
 
@@ -128,8 +58,7 @@ namespace Crystal
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(OnKeyPressed));
+		dispatcher.Dispatch<Crystal::WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
 		for (auto it = mLayerStack.end(); it != mLayerStack.begin(); )
 		{
@@ -156,18 +85,4 @@ namespace Crystal
 		mRunning = false;
 		return true;
 	}
-
-	bool Application::OnKeyPressed(KeyPressedEvent& e)
-	{
-		switch (e.GetKeyCode())
-		{
-			case CL_KEY_A:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.0f,		0.1f,	0.0f)); return true;
-			case CL_KEY_D:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.0f,		-0.1f,	0.0f)); return true;
-			case CL_KEY_S:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(-0.1f,	0.0f,	0.0f)); return true;
-			case CL_KEY_W:	mCamera.SetPosition(mCamera.GetPosition() + glm::vec3(0.1f,		0.0f,	0.0f)); return true;
-		}
-
-		return false;
-	}
-
 }

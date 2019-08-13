@@ -53,12 +53,6 @@ namespace Crystal
 
 		LayerStack mLayerStack;
 
-		std::shared_ptr<Shader> mShader;
-		std::shared_ptr<VertexBuffer> mVertexBuffer;
-		std::shared_ptr<IndexBuffer> mIndexBuffer;
-		std::shared_ptr<VertexArray> mVertexArray;
-		OrthographicCamera mCamera;
-
 		static Application* sInstance;
 	};
 

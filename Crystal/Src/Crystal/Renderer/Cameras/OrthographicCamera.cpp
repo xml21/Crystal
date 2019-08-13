@@ -12,7 +12,7 @@ namespace Crystal
 		mViewProjectionMatrix = mViewMatrix * mProjectionMatrix;
 
 		SetPosition({ 0.0f, 0.0f, 0.0f });
-		SetRotation(40.0f);
+		SetRotation(0.0f);
 	}
 
 	void OrthographicCamera::SetViewProjectionMatrixRotation()

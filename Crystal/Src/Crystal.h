@@ -16,6 +16,16 @@ File containing all global includes for application classes
 
 #include "Crystal/ImGui/ImGuiLayer.h"
 
+// -------- Renderer ----------
+#include "Crystal/Renderer/Renderer.h"
+#include "Crystal/Renderer/RenderCommand.h"
+#include "Crystal/Renderer/Buffers/VertexBuffer.h"
+#include "Crystal/Renderer/Buffers/IndexBuffer.h"
+#include "Crystal/Renderer/Shader.h"
+#include "Crystal/Renderer/VertexArray.h"
+#include "Crystal/Renderer/Cameras/OrthographicCamera.h"
+// ----------------------------
+
 // ------- Entry Point --------
 #include "Crystal/EntryPoint.h"
 // ----------------------------
