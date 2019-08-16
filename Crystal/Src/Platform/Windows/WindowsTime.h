@@ -4,8 +4,7 @@
 
 namespace Crystal
 {
-	/* Struct holding current delta time in seconds */
-
+	/* Class holding current time in seconds. */
 	class WindowsTime : public Time
 	{
 	public:
@@ -13,6 +12,8 @@ namespace Crystal
 		virtual float GetMilliSeconds() const override { return mTime * 1000.0f; }
 
 		virtual void OnUpdate() override;
+
+		operator float() const { return mTime; }
 
 	private:
 		float mTime;
