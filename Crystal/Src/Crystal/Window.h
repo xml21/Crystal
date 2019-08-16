@@ -2,7 +2,7 @@
 
 #include "Crpch.h"
 
-#include "Crystal/Core.h"
+#include "Crystal/Core/Core.h"
 #include "Crystal/Events/Event.h"
 
 namespace Crystal

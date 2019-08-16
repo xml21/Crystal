@@ -14,7 +14,6 @@ namespace Crystal
 		virtual const BufferLayout& GetLayout() const= 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 
-		//TODO: Consider adding smart pointer for reference counting
 		static std::shared_ptr<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 }

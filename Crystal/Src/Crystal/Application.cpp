@@ -3,12 +3,13 @@
 #include "Application.h"
 
 #include "Crystal/Events/ApplicationEvent.h"
-#include "Crystal/Log.h"
+
+#include "Crystal/Logging/Log.h"
 
 #include "glad/glad.h"
 
-#include "Input.h"
-#include "KeyCodes.h"
+#include "Input/Input.h"
+#include "Input/KeyCodes.h"
 
 #include "ImGui/ImGuiLayer.h"
 #include "ImGui/imgui.h"
@@ -20,6 +21,8 @@
 #include "Renderer/Buffers/BufferLayout.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/RenderCommand.h"
+
+#include "Time/Time.h"
 
 namespace Crystal
 {
@@ -33,6 +36,9 @@ namespace Crystal
 		sInstance = this;
 
 		mWindow = std::unique_ptr<Window>(Window::Create());
+		
+		mTimer = std::shared_ptr<Time>(Time::Create());
+
 		mWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		mImGuiLayer = std::make_shared<ImGuiLayer>();
@@ -43,8 +49,16 @@ namespace Crystal
 	{
 		while (mRunning)
 		{
+			mTimer->OnUpdate();
+
+			//--------------- Delta Time calculation ------------------
+			float Time = mTimer->GetSeconds(); //Current time (in seconds)
+			float DeltaTime = Time - mLastFrameTime; //Delta time
+			mLastFrameTime = Time; //Previous time
+			//--------------- Delta Time calculation ------------------
+
 			for (std::shared_ptr<Layer> layer : mLayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(DeltaTime);
 
 			mImGuiLayer->Begin();
 			for (std::shared_ptr<Layer> layer : mLayerStack)

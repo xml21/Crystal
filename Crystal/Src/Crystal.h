@@ -5,13 +5,17 @@ File containing all global includes for application classes
 */
 
 #include "Crystal/Application.h"
-#include "Crystal/Layer.h"
-#include "Crystal/Log.h"
+
+#include "Crystal/Layers/Layer.h"
+
+#include "Crystal/Logging/Log.h"
+
+#include "Crystal/Core/Core.h"
 
 // --------- Input ------------
-#include "Crystal/Input.h"
-#include "Crystal/MouseButtonCodes.h"
-#include "Crystal/KeyCodes.h"
+#include "Crystal/Input/Input.h"
+#include "Crystal/Input/MouseButtonCodes.h"
+#include "Crystal/Input/KeyCodes.h"
 // ----------------------------
 
 #include "Crystal/ImGui/ImGuiLayer.h"

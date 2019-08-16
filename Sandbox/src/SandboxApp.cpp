@@ -29,7 +29,6 @@ public:
 		//Index Buffer
 		uint32_t Indices[3] = { 0, 1, 2 };
 
-
 		mIndexBuffer = Crystal::IndexBuffer::Create(Indices, sizeof(Indices) / sizeof(uint32_t));
 		mVertexArray->SetIndexBuffer(mIndexBuffer);
 
@@ -69,22 +68,22 @@ public:
 		mShader = std::make_unique<Crystal::Shader>(vertexSrc, fragmentSrc);
 	}
 
-	void OnUpdate() override
+	void OnUpdate(float DeltaTime) override
 	{
 		Crystal::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Crystal::RenderCommand::Clear();
 
 		//---------------- Camera ----------------------
 		if (Crystal::Input::IsKeyPressed(CL_KEY_A))
-			mCameraPosition.x -= mCameraMoveSpeed;
+			mCameraPosition.x -= mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_D))
-			mCameraPosition.x += mCameraMoveSpeed;
+			mCameraPosition.x += mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_W))
-			mCameraPosition.y += mCameraMoveSpeed;
+			mCameraPosition.y += mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_S))
-			mCameraPosition.y -= mCameraMoveSpeed;
+			mCameraPosition.y -= mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_Q))
-			mCameraRotation -= mCameraRotationSpeed;
+			mCameraRotation -= mCameraRotationSpeed * DeltaTime;
 
 		mCamera.SetPosition(mCameraPosition);
 		mCamera.SetRotation(mCameraRotation);
@@ -105,10 +104,10 @@ private:
 
 	glm::vec3 mCameraPosition;
 
-	float mCameraMoveSpeed = .1f;
+	float mCameraMoveSpeed = 1.0f;
 
 	float mCameraRotation = 0.0f;
-	float mCameraRotationSpeed = 2.0f;
+	float mCameraRotationSpeed = 100.0f;
 };
 
 class Sandbox : public Crystal::Application

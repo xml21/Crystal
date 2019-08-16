@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-#include "Crystal/Log.h"
+#include "Crystal/Logging/Log.h"
 
 #ifdef CR_PLATFORM_WINDOWS
 #include <Windows.h>

@@ -12,7 +12,7 @@
 
 namespace Crystal
 {
-	/* One static variable to rule them all (I mean all open windows) */
+	/* One static variable to rule all open windows) */
 	static bool sGLFWInitialized = false;
 
 	static void GLFWErrorCallback(int error, const char* description)

@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Crystal/Layer.h"
+#include "Crystal/Layers/Layer.h"
+
 #include "Crystal/Events/MouseEvent.h"
 #include "Crystal/Events/KeyEvent.h"
 #include "Crystal/Events/ApplicationEvent.h"
@@ -22,8 +23,6 @@ namespace Crystal {
 
 		/* End layer-specific operations, like for ex. rendering */
 		void End();
-
-		float mTime = 0.0f;
 	};
 
 }

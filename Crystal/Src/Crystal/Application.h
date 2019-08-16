@@ -1,15 +1,17 @@
 #pragma once
 
-#include "Core.h"
 #include "Window.h"
+
+#include "Core/Core.h"
 
 #include "Events/Event.h"
 #include "Events/KeyEvent.h"
 #include "Events/ApplicationEvent.h"
 
-#include "Crystal/Layer.h"
+#include "Crystal/Layers/Layer.h"
+#include "Crystal/Layers/LayerStack.h"
+
 #include "Crystal/ImGui/ImGuiLayer.h"
-#include "Crystal/LayerStack.h"
 
 #include "Renderer/Shader.h"
 #include "Renderer/VertexArray.h"
@@ -17,6 +19,7 @@
 #include "Renderer/Buffers/VertexBuffer.h"
 #include "Renderer/Cameras/OrthographicCamera.h"
 
+#include "Time/Time.h"
 
 class Event;
 
@@ -47,11 +50,14 @@ namespace Crystal
 		bool OnKeyPressed(KeyPressedEvent& e);
 
 		std::unique_ptr<Window> mWindow;
+		std::shared_ptr<Time> mTimer;
 		std::shared_ptr<ImGuiLayer> mImGuiLayer;
 
 		bool mRunning = true;
 
 		LayerStack mLayerStack;
+
+		float mLastFrameTime = 0.0f;
 
 		static Application* sInstance;
 	};

@@ -4,11 +4,23 @@
     <Filter Include="Crystal">
       <UniqueIdentifier>{873AF83B-F319-77D7-FC31-02AE6890DD38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Crystal\Core">
+      <UniqueIdentifier>{3F0B8E00-2B6E-1DA5-D4F3-555BC035E927}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Crystal\Events">
       <UniqueIdentifier>{8BE85F61-77B6-5367-604A-C48D4CB72FCC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Crystal\ImGui">
       <UniqueIdentifier>{F138BA12-5DF9-3549-2634-7FC692B37A25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Crystal\Input">
+      <UniqueIdentifier>{C673BB12-3234-3749-FB6E-80C667EE7B25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Crystal\Layers">
+      <UniqueIdentifier>{66D34270-52A1-3676-3B35-A79C27A212DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Crystal\Logging">
+      <UniqueIdentifier>{1DB20098-893D-6E5C-924E-F150FE58CA5C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Crystal\Renderer">
       <UniqueIdentifier>{0D46F72F-F93E-1682-2271-FB060EC9F58D}</UniqueIdentifier>
@@ -18,6 +30,9 @@
     </Filter>
     <Filter Include="Crystal\Renderer\Cameras">
       <UniqueIdentifier>{F826F597-E44B-4418-0D97-29A8F91A4336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Crystal\Time">
+      <UniqueIdentifier>{85439700-71A6-26A5-1A2C-5F5B066EF227}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
@@ -38,8 +53,8 @@
     <ClInclude Include="Src\Crystal\Application.h">
       <Filter>Crystal</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Core.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Core\Core.h">
+      <Filter>Crystal\Core</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\EntryPoint.h">
       <Filter>Crystal</Filter>
@@ -59,23 +74,23 @@
     <ClInclude Include="Src\Crystal\ImGui\ImGuiLayer.h">
       <Filter>Crystal\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Input.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Input\Input.h">
+      <Filter>Crystal\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\KeyCodes.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Input\KeyCodes.h">
+      <Filter>Crystal\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Layer.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Input\MouseButtonCodes.h">
+      <Filter>Crystal\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\LayerStack.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Layers\Layer.h">
+      <Filter>Crystal\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Log.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Layers\LayerStack.h">
+      <Filter>Crystal\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\MouseButtonCodes.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Logging\Log.h">
+      <Filter>Crystal\Logging</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Buffers\BufferLayout.h">
       <Filter>Crystal\Renderer\Buffers</Filter>
@@ -107,6 +122,9 @@
     <ClInclude Include="Src\Crystal\Renderer\VertexArray.h">
       <Filter>Crystal\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Time\Time.h">
+      <Filter>Crystal\Time</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Window.h">
       <Filter>Crystal</Filter>
     </ClInclude>
@@ -128,6 +146,9 @@
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Platform\Windows\WindowsTime.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -143,14 +164,14 @@
     <ClCompile Include="Src\Crystal\ImGui\ImGuiLayer.cpp">
       <Filter>Crystal\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\Layer.cpp">
-      <Filter>Crystal</Filter>
+    <ClCompile Include="Src\Crystal\Layers\Layer.cpp">
+      <Filter>Crystal\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\LayerStack.cpp">
-      <Filter>Crystal</Filter>
+    <ClCompile Include="Src\Crystal\Layers\LayerStack.cpp">
+      <Filter>Crystal\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\Log.cpp">
-      <Filter>Crystal</Filter>
+    <ClCompile Include="Src\Crystal\Logging\Log.cpp">
+      <Filter>Crystal\Logging</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Buffers\BufferLayout.cpp">
       <Filter>Crystal\Renderer\Buffers</Filter>
@@ -179,6 +200,9 @@
     <ClCompile Include="Src\Crystal\Renderer\VertexArray.cpp">
       <Filter>Crystal\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Crystal\Time\Time.cpp">
+      <Filter>Crystal\Time</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp">
       <Filter>Platform\OpenGL\Buffers</Filter>
     </ClCompile>
@@ -195,6 +219,9 @@
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\Windows\WindowsTime.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">

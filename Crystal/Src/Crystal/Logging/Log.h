@@ -2,7 +2,8 @@
 
 #include "Crpch.h"
 
-#include "Core.h"
+#include "Crystal/Core/Core.h"
+
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
