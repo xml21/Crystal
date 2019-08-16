@@ -22,7 +22,7 @@ namespace Crystal
 		glm::mat4 Transform = mVPTranslation * mVPRotation;
 
 		mViewMatrix = glm::inverse(Transform);
-		mViewProjectionMatrix = mViewMatrix * mProjectionMatrix;
+		mViewProjectionMatrix = mProjectionMatrix * mViewMatrix;
 	}
 
 	void OrthographicCamera::SetViewProjectionMatrixPosition()
@@ -32,6 +32,6 @@ namespace Crystal
 		glm::mat4 Transform = mVPTranslation * mVPRotation;
 
 		mViewMatrix = glm::inverse(Transform);
-		mViewProjectionMatrix = mViewMatrix * mProjectionMatrix;
+		mViewProjectionMatrix = mProjectionMatrix * mViewMatrix;
 	}
 }
