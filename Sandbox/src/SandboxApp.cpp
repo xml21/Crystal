@@ -1,4 +1,7 @@
 #include "Crystal.h"
+
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/random.hpp"
 /**
 * Singleton class. Client application
 */
@@ -6,7 +9,7 @@
 class ExampleLayer : public Crystal::Layer 
 {
 public:
-	ExampleLayer() : Layer(), mCamera(-1.6f, 1.6f, -0.9f, 0.9f), mCameraPosition(0.0f)
+	ExampleLayer() : Layer(), mCamera(-1.6f, 1.6f, -0.9f, 0.9f), mCameraPosition(0.0f), mMovableObjectPosition(0.0f)
 	{
 		mVertexArray = Crystal::VertexArray::Create();
 
@@ -38,7 +41,8 @@ public:
 			layout(location = 0) in vec3 aPosition;
 			layout(location = 1) in vec4 aColor;
 
-			uniform mat4 u_ViewProjection;
+			uniform mat4 uViewProjection;
+			uniform mat4 uTransform;
 
 			out vec3 vPosition;
 			out vec4 vColor;
@@ -47,7 +51,7 @@ public:
 			{
 				vPosition = aPosition;
 				vColor = aColor;
-				gl_Position = u_ViewProjection * vec4(aPosition, 1.0);	
+				gl_Position = uViewProjection * uTransform * vec4(aPosition, 1.0);	
 			}
 		)";
 
@@ -66,6 +70,18 @@ public:
 		)";
 
 		mShader = std::make_unique<Crystal::Shader>(vertexSrc, fragmentSrc);
+
+		// ---------------------------- Preparing random object transforms ----------------------------
+		mObjectTransforms = new glm::mat4[mObjectsAmount];
+
+		for (int i = 0; i < mObjectsAmount; i++)
+		{
+			glm::vec3 Position(glm::linearRand(-5.0f, 5.0f) * 0.11f, glm::linearRand(-5.0f, 5.0f) * 0.11f, 0.0f);
+			glm::mat4 Transform = glm::translate(glm::mat4(1.0f), Position) * mObjectsScale;
+		
+			mObjectTransforms[i] = glm::mat4(Transform);
+		}
+		// --------------------------------------------------------------------------------------------
 	}
 
 	void OnUpdate(float DeltaTime) override
@@ -74,6 +90,7 @@ public:
 		Crystal::RenderCommand::Clear();
 
 		//---------------- Camera ----------------------
+		// Camera movement
 		if (Crystal::Input::IsKeyPressed(CL_KEY_A))
 			mCameraPosition.x -= mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_D))
@@ -82,15 +99,33 @@ public:
 			mCameraPosition.y += mCameraMoveSpeed * DeltaTime;
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_S))
 			mCameraPosition.y -= mCameraMoveSpeed * DeltaTime;
+		// Camera rotation
 		else if (Crystal::Input::IsKeyPressed(CL_KEY_Q))
 			mCameraRotation -= mCameraRotationSpeed * DeltaTime;
+		else if (Crystal::Input::IsKeyPressed(CL_KEY_E))
+			mCameraRotation += mCameraRotationSpeed * DeltaTime;
+		// Object movement
+		else if (Crystal::Input::IsKeyPressed(CL_KEY_F))
+			mMovableObjectPosition.x -= mObjectMoveSpeed * DeltaTime;
+		else if (Crystal::Input::IsKeyPressed(CL_KEY_H))
+			mMovableObjectPosition.x += mObjectMoveSpeed * DeltaTime;
+		else if (Crystal::Input::IsKeyPressed(CL_KEY_T))
+			mMovableObjectPosition.y += mObjectMoveSpeed * DeltaTime;
+		else if (Crystal::Input::IsKeyPressed(CL_KEY_G))
+			mMovableObjectPosition.y -= mObjectMoveSpeed * DeltaTime;
 
 		mCamera.SetPosition(mCameraPosition);
 		mCamera.SetRotation(mCameraRotation);
 		//----------------------------------------------
-
+		
 		Crystal::Renderer::BeginScene(mCamera);
-		Crystal::Renderer::Submit(mShader, mVertexArray); //Request draw call
+
+		for (int i = 0; i < mObjectsAmount; i++)
+			Crystal::Renderer::Submit(mShader, mVertexArray, mObjectTransforms[i]); //Request draw call
+
+		glm::mat4 ObjectTransform = glm::translate(glm::mat4(1.0f), mMovableObjectPosition) * mObjectsScale;
+		Crystal::Renderer::Submit(mShader, mVertexArray, ObjectTransform); //Request draw call
+
 		Crystal::Renderer::EndScene();
 	}
 
@@ -105,9 +140,15 @@ private:
 	glm::vec3 mCameraPosition;
 
 	float mCameraMoveSpeed = 1.0f;
+	float mObjectMoveSpeed = 1.0f;
 
 	float mCameraRotation = 0.0f;
 	float mCameraRotationSpeed = 100.0f;
+
+	glm::vec3 mMovableObjectPosition;
+	glm::mat4* mObjectTransforms;
+	const glm::mat4 mObjectsScale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+	const int mObjectsAmount = 10;
 };
 
 class Sandbox : public Crystal::Application

@@ -18,13 +18,14 @@ namespace Crystal
 
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::Submit(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& VertexArray, const glm::mat4& Transform)
 	{
-		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", mSceneData->GetViewProjectionMatrix());
+		Shader->Bind();
+		Shader->UploadUniformMat4("uViewProjection", mSceneData->GetViewProjectionMatrix());
+		Shader->UploadUniformMat4("uTransform", Transform);
 
-		vertexArray->Bind();
-		RenderCommand::DrawIndexed(vertexArray);
+		VertexArray->Bind();
+		RenderCommand::DrawIndexed(VertexArray);
 	}
 
 }
