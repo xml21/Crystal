@@ -140,6 +140,9 @@
     <ClInclude Include="Src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
@@ -213,6 +216,9 @@
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLVertexArray.cpp">

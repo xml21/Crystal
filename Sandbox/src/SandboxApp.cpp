@@ -2,6 +2,12 @@
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/random.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
+#include "imgui/imgui.h"
+
+#include "Platform/OpenGL/OpenGLShader.h"
+
 /**
 * Singleton class. Client application
 */
@@ -61,24 +67,27 @@ public:
 			layout(location = 0) out vec4 color;
 
 			in vec3 vPosition;
-			in vec4 vColor;
+
+			uniform vec3 uColor;
 
 			void main()
 			{
-				color = vColor;
+				color = vec4(uColor, 1.0);
 			}
 		)";
 
-		mShader = std::make_unique<Crystal::Shader>(vertexSrc, fragmentSrc);
+		mShader = Crystal::Shader::Create(vertexSrc, fragmentSrc);
 
 		// ---------------------------- Preparing random object transforms ----------------------------
 		mObjectTransforms = new glm::mat4[mObjectsAmount];
+		mObjectColors = new glm::vec3[mObjectsAmount];
 
 		for (int i = 0; i < mObjectsAmount; i++)
 		{
 			glm::vec3 Position(glm::linearRand(-5.0f, 5.0f) * 0.11f, glm::linearRand(-5.0f, 5.0f) * 0.11f, 0.0f);
 			glm::mat4 Transform = glm::translate(glm::mat4(1.0f), Position) * mObjectsScale;
 		
+			mObjectColors[i] = glm::vec4(glm::linearRand(0.0f, 1.0f), glm::linearRand(0.0f, 1.0f), glm::linearRand(0.0f, 1.0f), 0.0f);
 			mObjectTransforms[i] = glm::mat4(Transform);
 		}
 		// --------------------------------------------------------------------------------------------
@@ -89,7 +98,7 @@ public:
 		Crystal::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Crystal::RenderCommand::Clear();
 
-		//---------------- Camera ----------------------
+		//---------------- Camera -----------------------------------
 		// Camera movement
 		if (Crystal::Input::IsKeyPressed(CL_KEY_A))
 			mCameraPosition.x -= mCameraMoveSpeed * DeltaTime;
@@ -116,17 +125,36 @@ public:
 
 		mCamera.SetPosition(mCameraPosition);
 		mCamera.SetRotation(mCameraRotation);
-		//----------------------------------------------
+		//-----------------------------------------------------------
 		
 		Crystal::Renderer::BeginScene(mCamera);
 
-		for (int i = 0; i < mObjectsAmount; i++)
-			Crystal::Renderer::Submit(mShader, mVertexArray, mObjectTransforms[i]); //Request draw call
+		//------------------------- TODO: Prepare proper abstraction of Shader.cpp class ---------------------
+		std::shared_ptr<Crystal::OpenGLShader> OpenGLShader = std::dynamic_pointer_cast<Crystal::OpenGLShader>(mShader);
+		OpenGLShader->Bind();
+		//----------------------------------------------------------------------------------------------------
 
+		//---------------------------------- Rendering batch of triangles ------------------------------------
+		for (int i = 0; i < mObjectsAmount; i++)
+		{		
+			OpenGLShader->UploadUniformFloat3("uColor", mObjectColors[i] * mTintColor);
+			Crystal::Renderer::Submit(OpenGLShader, mVertexArray, mObjectTransforms[i]); //Request draw call
+		}
+		//---------------------------------- Rendering batch of triangles ------------------------------------
+
+		//------------------------------------- Unique, movable triangle -------------------------------------
 		glm::mat4 ObjectTransform = glm::translate(glm::mat4(1.0f), mMovableObjectPosition) * mObjectsScale;
 		Crystal::Renderer::Submit(mShader, mVertexArray, ObjectTransform); //Request draw call
+		//------------------------------------- Unique, movable triangle -------------------------------------
 
 		Crystal::Renderer::EndScene();
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Color Settings");
+		ImGui::ColorEdit3("Tint Color", glm::value_ptr(mTintColor));
+		ImGui::End();
 	}
 
 private:
@@ -147,6 +175,9 @@ private:
 
 	glm::vec3 mMovableObjectPosition;
 	glm::mat4* mObjectTransforms;
+	glm::vec3* mObjectColors;
+	glm::vec3 mTintColor = glm::vec3(1.0f, 1.0f, 1.0f);
+
 	const glm::mat4 mObjectsScale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 	const int mObjectsAmount = 10;
 };
