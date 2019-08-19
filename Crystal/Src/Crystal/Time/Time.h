@@ -16,6 +16,6 @@ namespace Crystal
 		virtual float GetMilliSeconds() const = 0;
 		virtual void OnUpdate() = 0;
 
-		static std::shared_ptr<Time> Create();
+		static Ref<Time> Create();
 	};
 }

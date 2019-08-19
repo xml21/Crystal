@@ -9,7 +9,7 @@ class VertexArray;
 
 namespace Crystal
 {
-	std::shared_ptr<SceneData> Renderer::mSceneData = std::make_shared<SceneData>();
+	Ref<SceneData> Renderer::mSceneData = std::make_shared<SceneData>();
 
 	void Renderer::BeginScene(OrthographicCamera& Camera)
 	{
@@ -21,12 +21,12 @@ namespace Crystal
 
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& VertexArray, const glm::mat4& Transform)
+	void Renderer::Submit(const Ref<Shader>& Shader, const Ref<VertexArray>& VertexArray, const glm::mat4& Transform)
 	{
 		Shader->Bind();
 
 		//------------------- TODO: Prepare proper abstraction of Shader.cpp class -------------------
-		std::shared_ptr<OpenGLShader> MyOpenGLShader = std::dynamic_pointer_cast<OpenGLShader>(Shader);
+		Ref<OpenGLShader> MyOpenGLShader = std::dynamic_pointer_cast<OpenGLShader>(Shader);
 
 		MyOpenGLShader->UploadUniformMat4("uViewProjection", mSceneData->GetViewProjectionMatrix());
 		MyOpenGLShader->UploadUniformMat4("uTransform", Transform);

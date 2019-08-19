@@ -130,7 +130,7 @@ public:
 		Crystal::Renderer::BeginScene(mCamera);
 
 		//------------------------- TODO: Prepare proper abstraction of Shader.cpp class ---------------------
-		std::shared_ptr<Crystal::OpenGLShader> OpenGLShader = std::dynamic_pointer_cast<Crystal::OpenGLShader>(mShader);
+		Crystal::Ref<Crystal::OpenGLShader> OpenGLShader = std::dynamic_pointer_cast<Crystal::OpenGLShader>(mShader);
 		OpenGLShader->Bind();
 		//----------------------------------------------------------------------------------------------------
 
@@ -158,10 +158,10 @@ public:
 	}
 
 private:
-	std::shared_ptr<Crystal::Shader> mShader;
-	std::shared_ptr<Crystal::VertexBuffer> mVertexBuffer;
-	std::shared_ptr<Crystal::IndexBuffer> mIndexBuffer;
-	std::shared_ptr<Crystal::VertexArray> mVertexArray;
+	Crystal::Ref<Crystal::Shader> mShader;
+	Crystal::Ref<Crystal::VertexBuffer> mVertexBuffer;
+	Crystal::Ref<Crystal::IndexBuffer> mIndexBuffer;
+	Crystal::Ref<Crystal::VertexArray> mVertexArray;
 
 	Crystal::OrthographicCamera mCamera;
 

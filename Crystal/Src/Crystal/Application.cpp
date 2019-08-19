@@ -35,9 +35,9 @@ namespace Crystal
 		CL_CORE_ASSERT(!sInstance, "Application already exists!");
 		sInstance = this;
 
-		mWindow = std::unique_ptr<Window>(Window::Create());
+		mWindow = Scope<Window>(Window::Create());
 		
-		mTimer = std::shared_ptr<Time>(Time::Create());
+		mTimer = Ref<Time>(Time::Create());
 
 		mWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
@@ -57,11 +57,11 @@ namespace Crystal
 			mLastFrameTime = Time; //Previous time
 			//--------------- Delta Time calculation ------------------
 
-			for (std::shared_ptr<Layer> layer : mLayerStack)
+			for (Ref<Layer> layer : mLayerStack)
 				layer->OnUpdate(DeltaTime);
 
 			mImGuiLayer->Begin();
-			for (std::shared_ptr<Layer> layer : mLayerStack)
+			for (Ref<Layer> layer : mLayerStack)
 				layer->OnImGuiRender();
 			mImGuiLayer->End();
 
@@ -82,13 +82,13 @@ namespace Crystal
 		}
 	}
 
-	void Application::PushLayer(std::shared_ptr<Layer> layer)
+	void Application::PushLayer(Ref<Layer> layer)
 	{
 		mLayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
-	void Application::PushOverlay(std::shared_ptr<Layer> overlay)
+	void Application::PushOverlay(Ref<Layer> overlay)
 	{
 		mLayerStack.PushOverlay(overlay);
 		overlay->OnAttach();

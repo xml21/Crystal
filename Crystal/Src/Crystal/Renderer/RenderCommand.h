@@ -10,7 +10,7 @@ namespace Crystal
 		static inline void SetClearColor(const glm::vec4& color) { sRendererAPI->SetClearColor(color); };
 		static inline void Clear() { sRendererAPI->Clear(); }
 
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray)
 		{
 			sRendererAPI->DrawIndexed(vertexArray);
 		}

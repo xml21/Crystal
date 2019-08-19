@@ -5,7 +5,7 @@
 
 namespace Crystal
 {
-	std::shared_ptr<Time> Time::Create()
+	Ref<Time> Time::Create()
 	{
 		#ifdef CL_PLATFORM_WINDOWS
 			return std::make_shared<WindowsTime>();

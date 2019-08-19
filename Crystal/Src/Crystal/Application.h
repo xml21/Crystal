@@ -39,8 +39,8 @@ namespace Crystal
 
 		void OnEvent(Event& e);
 
-		void PushLayer(std::shared_ptr<Layer> layer);
-		void PushOverlay(std::shared_ptr<Layer> overlay);
+		void PushLayer(Ref<Layer> layer);
+		void PushOverlay(Ref<Layer> overlay);
 
 		inline Window& GetWindow() { return *mWindow; }
 
@@ -49,9 +49,9 @@ namespace Crystal
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnKeyPressed(KeyPressedEvent& e);
 
-		std::unique_ptr<Window> mWindow;
-		std::shared_ptr<Time> mTimer;
-		std::shared_ptr<ImGuiLayer> mImGuiLayer;
+		Scope<Window> mWindow;
+		Ref<Time> mTimer;
+		Ref<ImGuiLayer> mImGuiLayer;
 
 		bool mRunning = true;
 

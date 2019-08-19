@@ -18,7 +18,7 @@ namespace Crystal
 		virtual void Clear() = 0;
 
 		/* Draw call request supplied by vertex array */
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexarray) = 0;
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexarray) = 0;
 
 		inline static API GetAPI() { return sAPI; }
 

@@ -6,7 +6,7 @@
 
 namespace Crystal
 {
-	std::shared_ptr<VertexArray> VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{

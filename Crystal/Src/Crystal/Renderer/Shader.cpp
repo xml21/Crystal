@@ -7,7 +7,7 @@
 
 namespace Crystal
 {
-	std::shared_ptr<Shader> Shader::Create(const std::string& VertexSrc, const std::string& FragmentSrc)
+	Ref<Shader> Shader::Create(const std::string& VertexSrc, const std::string& FragmentSrc)
 	{
 		switch (Renderer::GetAPI())
 		{

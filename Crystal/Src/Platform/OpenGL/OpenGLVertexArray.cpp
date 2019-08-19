@@ -47,28 +47,28 @@ namespace Crystal
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		CL_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
 		glBindVertexArray(mRendererID);
 		vertexBuffer->Bind();
 
-		uint32_t index = 0;
+		uint32_t Index = 0;
 		const auto& Layout = vertexBuffer->GetLayout();
 
 		for (const auto& Element : Layout)
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, Element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(Element.GetType()),
+			glEnableVertexAttribArray(Index);
+			glVertexAttribPointer(Index, Element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(Element.GetType()),
 				Element.GetNormalized() ? GL_TRUE : GL_FALSE, Layout.GetStride(), (const void*)Element.GetOffset());
-			index++;
+			Index++;
 		}
 
 		mVertexBuffers.push_back(vertexBuffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(mRendererID);
 		indexBuffer->Bind();

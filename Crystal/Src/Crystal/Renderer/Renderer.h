@@ -25,10 +25,10 @@ namespace Crystal
 		static void BeginScene(OrthographicCamera& Camera);
 		static void EndScene();
 
-		static void Submit(const std::shared_ptr<Shader>& Shader, const std::shared_ptr<VertexArray>& VertexArray, const glm::mat4& Transform = glm::mat4(1.0f));
+		static void Submit(const Ref<Shader>& Shader, const Ref<VertexArray>& VertexArray, const glm::mat4& Transform = glm::mat4(1.0f));
 
 		inline static API GetAPI() { return RendererAPI::GetAPI(); };
 
-		static std::shared_ptr<SceneData> mSceneData;
+		static Ref<SceneData> mSceneData;
 	};
 }
