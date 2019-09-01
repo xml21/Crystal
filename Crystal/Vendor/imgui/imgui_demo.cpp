@@ -15,7 +15,7 @@
 
 // Message to beginner C/C++ programmers about the meaning of the 'static' keyword:
 // In this demo code, we frequently we use 'static' variables inside functions. A static variable persist across calls, so it is
-// essentially like a global variable but declared inside the scope of the function. We do this as a way to gather code and data
+// essentially like a global variable but declared inside the Ref of the function. We do this as a way to gather code and data
 // in the same place, to make the demo source code faster to read, faster to write, and smaller in size.
 // It also happens to be a convenient way of storing simple UI related information as long as your function doesn't need to be reentrant
 // or used in threads. This might be a pattern you will want to use in your code, but most of the real data you would be editing is

@@ -38,5 +38,7 @@ namespace Crystal
 	using Ref = std::shared_ptr<T>;
 
 	template<typename T>
-	using Scope = std::unique_ptr<T>;
+	using Ref = std::shared_ptr<T>;
+
+	using byte = unsigned char;
 }

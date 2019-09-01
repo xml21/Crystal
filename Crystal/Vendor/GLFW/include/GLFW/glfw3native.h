@@ -119,6 +119,7 @@ extern "C" {
 #if defined(GLFW_EXPOSE_NATIVE_OSMESA)
  #include <GL/osmesa.h>
 #endif
+#include "glfw3.h"
 
 
 /*************************************************************************

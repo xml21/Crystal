@@ -1,39 +1,50 @@
 #include "Crpch.h"
 #include "Renderer.h"
-#include "RenderCommand.h"
+#include "RendererAPI.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
-
-
-class VertexArray;
 
 namespace Crystal
 {
 	Ref<SceneData> Renderer::mSceneData = std::make_shared<SceneData>();
+	Renderer* Renderer::sInstance = new Renderer();
 
-	void Renderer::BeginScene(OrthographicCamera& Camera)
+	API RendererAPI::sAPI = API::OpenGL;
+
+	void Renderer::Init()
 	{
-		mSceneData->SetViewProjectionMatrix(Camera.GetViewProjectionMatrix());
+		CL_RENDER({ RendererAPI::Init(); });
 	}
 
-	void Renderer::EndScene()
+	void Renderer::Clear()
+	{
+		CL_RENDER({
+			RendererAPI::Clear(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+		});
+	}
+
+	void Renderer::Clear(float r, float g, float b, float a /*= 1.0f*/)
+	{
+		CL_RENDER_4(r, g, b, a, {
+			RendererAPI::Clear(glm::vec4(r, g, b, a));
+		});
+	}
+
+	void Renderer::SetClearColor(float r, float g, float b, float a)
 	{
 
 	}
 
-	void Renderer::Submit(const Ref<Shader>& Shader, const Ref<VertexArray>& VertexArray, const glm::mat4& Transform)
+	void Renderer::DrawIndexed(unsigned int Count, bool DepthTest /*= true*/)
 	{
-		Shader->Bind();
+		CL_RENDER_2(Count, DepthTest, {
+			RendererAPI::DrawIndexed(Count, DepthTest);
+		});
+	}
 
-		//------------------- TODO: Prepare proper abstraction of Shader.cpp class -------------------
-		Ref<OpenGLShader> MyOpenGLShader = std::dynamic_pointer_cast<OpenGLShader>(Shader);
-
-		MyOpenGLShader->UploadUniformMat4("uViewProjection", mSceneData->GetViewProjectionMatrix());
-		MyOpenGLShader->UploadUniformMat4("uTransform", Transform);
-		//--------------------------------------------------------------------------------------------
-
-		VertexArray->Bind();
-		RenderCommand::DrawIndexed(VertexArray);
+	void Renderer::WaitAndRender()
+	{
+		sInstance->mCommandQueue.Execute();
 	}
 
 }

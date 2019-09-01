@@ -1,9 +1,11 @@
 #include "Crpch.h"
+
 #include "WindowsInput.h"
-#include "Crystal/Application.h"
+#include "WindowsWindow.h"
+
+#include "Crystal/Core/Application.h"
 
 #include <GLFW/glfw3.h>
-
 
 namespace Crystal
 {
@@ -33,5 +35,26 @@ namespace Crystal
 
 		return {(float)xPos, (float)yPos};
 	}
+
+	float WindowsInput::GetMouseXImpl()
+	{
+		auto& Window = static_cast<WindowsWindow&>(Application::Get().GetWindow());
+
+		double XPos, YPos;
+		glfwGetCursorPos(static_cast<GLFWwindow*>(Window.GetNativeWindow()), &XPos, &YPos);
+
+		return (float)XPos;
+	}
+
+	float WindowsInput::GetMouseYImpl()
+	{
+		auto& Window = static_cast<WindowsWindow&>(Application::Get().GetWindow());
+
+		double XPos, YPos;
+		glfwGetCursorPos(static_cast<GLFWwindow*>(Window.GetNativeWindow()), &XPos, &YPos);
+
+		return (float)YPos;
+	}
+
 }
 

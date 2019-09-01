@@ -2,14 +2,17 @@
 
 #include "Crystal/Renderer/Buffers/IndexBuffer.h"
 #include "Crystal/Renderer/Buffers/VertexBuffer.h"
+#include "Crystal/Renderer/RendererAPI.h"
 
 namespace Crystal
 {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(float* vertices, uint32_t size);
+		OpenGLVertexBuffer(unsigned int Size);
 		virtual ~OpenGLVertexBuffer();
+
+		virtual void SetData(void* Buffer, unsigned int Size, unsigned int Offset = 0) override;
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
@@ -18,7 +21,9 @@ namespace Crystal
 		virtual void SetLayout(const BufferLayout& layout) override { mLayout = layout; }
 
 	private:
-		uint32_t mRendererID;
+		RendererID mRendererID;
+		unsigned int mSize;
+
 		BufferLayout mLayout;
 	};
 }

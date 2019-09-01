@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Crystal/Window.h"
+#include "Crystal/Core/Window.h"
+
 #include "Crystal/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;

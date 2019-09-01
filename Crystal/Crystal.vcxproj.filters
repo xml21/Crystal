@@ -1,237 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Crystal">
-      <UniqueIdentifier>{873AF83B-F319-77D7-FC31-02AE6890DD38}</UniqueIdentifier>
+    <Filter Include="Src">
+      <UniqueIdentifier>{0D23880B-792C-887C-02A8-9E7C6EB0937C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Core">
-      <UniqueIdentifier>{3F0B8E00-2B6E-1DA5-D4F3-555BC035E927}</UniqueIdentifier>
+    <Filter Include="Src\Crystal">
+      <UniqueIdentifier>{7E929B99-EA47-148F-733C-0E66DFF00A93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Events">
-      <UniqueIdentifier>{8BE85F61-77B6-5367-604A-C48D4CB72FCC}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Core">
+      <UniqueIdentifier>{96F5098D-82EE-28DF-AB20-0E64977808EB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\ImGui">
-      <UniqueIdentifier>{F138BA12-5DF9-3549-2634-7FC692B37A25}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Events">
+      <UniqueIdentifier>{A2C47FFC-8EA8-4052-F708-3BA5E30B2BD4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Input">
-      <UniqueIdentifier>{C673BB12-3234-3749-FB6E-80C667EE7B25}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\ImGui">
+      <UniqueIdentifier>{286EB32E-9484-B1C4-DDFB-3CE64951824C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Layers">
-      <UniqueIdentifier>{66D34270-52A1-3676-3B35-A79C27A212DB}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Input">
+      <UniqueIdentifier>{FDA8B42E-69BF-B2C4-B236-3EE61E8C834C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Logging">
-      <UniqueIdentifier>{1DB20098-893D-6E5C-924E-F150FE58CA5C}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Layers">
+      <UniqueIdentifier>{7DAF620B-6993-2361-D2F3-1DB4BEF60DE3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Renderer">
-      <UniqueIdentifier>{0D46F72F-F93E-1682-2271-FB060EC9F58D}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Logging">
+      <UniqueIdentifier>{14111C97-8072-F9A4-09E0-3F5775403064}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Renderer\Buffers">
-      <UniqueIdentifier>{89C22379-75E7-72F9-9E32-58898AB67117}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Renderer">
+      <UniqueIdentifier>{E4837E12-D012-08DC-7931-1CD7659F1882}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Renderer\Cameras">
-      <UniqueIdentifier>{F826F597-E44B-4418-0D97-29A8F91A4336}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Renderer\Buffers">
+      <UniqueIdentifier>{60E71A6E-4CA2-0A1A-F559-8364E1F354AA}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Crystal\Time">
-      <UniqueIdentifier>{85439700-71A6-26A5-1A2C-5F5B066EF227}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Renderer\Cameras">
+      <UniqueIdentifier>{CF4BEC8C-BB06-DC38-64BE-5483505826C9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Renderer\Textures">
+      <UniqueIdentifier>{37F67729-A30E-5F53-6CBB-EEECD892F3EC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\OpenGL">
-      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    <Filter Include="Src\Crystal\Time">
+      <UniqueIdentifier>{DC2D138D-C826-32DF-F158-1764DDB011EB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\OpenGL\Buffers">
-      <UniqueIdentifier>{9A7AE343-06B2-2BDB-0FBC-8FFE7B7252D4}</UniqueIdentifier>
+    <Filter Include="Src\Platform">
+      <UniqueIdentifier>{011E97C6-ED80-266B-9606-5F218248F2ED}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    <Filter Include="Src\Platform\OpenGL">
+      <UniqueIdentifier>{15DC471C-813D-252A-0AAB-6BDC760B5CE9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Platform\OpenGL\Buffers">
+      <UniqueIdentifier>{91E08D43-FDED-BB29-86D4-B714F2E087E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Platform\OpenGL\Textures">
+      <UniqueIdentifier>{88154AAD-74D0-3959-1D88-B2A3092284E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Platform\Windows">
+      <UniqueIdentifier>{3B395FFD-27C8-E8C6-D0E6-FCC1BC54F96C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor">
+      <UniqueIdentifier>{935FDCD7-7F01-07AE-68BC-1A0254FD8DFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor\stb">
+      <UniqueIdentifier>{6BAF7327-5767-B574-C06E-8ED0AC455065}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Crpch.h" />
-    <ClInclude Include="Src\Crystal.h" />
-    <ClInclude Include="Src\Crystal\Application.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crpch.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Core\Application.h">
+      <Filter>Src\Crystal\Core</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Core\Core.h">
-      <Filter>Crystal\Core</Filter>
+      <Filter>Src\Crystal\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\EntryPoint.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Crystal\Core\EntryPoint.h">
+      <Filter>Src\Crystal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Core\Window.h">
+      <Filter>Src\Crystal\Core</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Events\ApplicationEvent.h">
-      <Filter>Crystal\Events</Filter>
+      <Filter>Src\Crystal\Events</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Events\Event.h">
-      <Filter>Crystal\Events</Filter>
+      <Filter>Src\Crystal\Events</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Events\KeyEvent.h">
-      <Filter>Crystal\Events</Filter>
+      <Filter>Src\Crystal\Events</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Events\MouseEvent.h">
-      <Filter>Crystal\Events</Filter>
+      <Filter>Src\Crystal\Events</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\ImGui\ImGuiLayer.h">
-      <Filter>Crystal\ImGui</Filter>
+      <Filter>Src\Crystal\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Input\Input.h">
-      <Filter>Crystal\Input</Filter>
+      <Filter>Src\Crystal\Input</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Input\KeyCodes.h">
-      <Filter>Crystal\Input</Filter>
+      <Filter>Src\Crystal\Input</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Input\MouseButtonCodes.h">
-      <Filter>Crystal\Input</Filter>
+      <Filter>Src\Crystal\Input</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Layers\Layer.h">
-      <Filter>Crystal\Layers</Filter>
+      <Filter>Src\Crystal\Layers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Layers\LayerStack.h">
-      <Filter>Crystal\Layers</Filter>
+      <Filter>Src\Crystal\Layers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Logging\Log.h">
-      <Filter>Crystal\Logging</Filter>
+      <Filter>Src\Crystal\Logging</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Buffers\BufferLayout.h">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Buffers\IndexBuffer.h">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Buffers\VertexBuffer.h">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Cameras\Camera.h">
+      <Filter>Src\Crystal\Renderer\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Cameras\OrthographicCamera.h">
-      <Filter>Crystal\Renderer\Cameras</Filter>
+      <Filter>Src\Crystal\Renderer\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Framebuffer.h">
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Renderer\RenderCommand.h">
-      <Filter>Crystal\Renderer</Filter>
+    <ClInclude Include="Src\Crystal\Renderer\Mesh.h">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\RenderCommandQueue.h">
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Renderer.h">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\RendererAPI.h">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Shader.h">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Renderer\VertexArray.h">
-      <Filter>Crystal\Renderer</Filter>
+    <ClInclude Include="Src\Crystal\Renderer\Textures\Texture.h">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Textures\Texture2D.h">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Textures\TextureCube.h">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Time\Time.h">
-      <Filter>Crystal\Time</Filter>
+      <Filter>Src\Crystal\Time</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Crystal\Window.h">
-      <Filter>Crystal</Filter>
+    <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLFramebuffer.h">
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h">
-      <Filter>Platform\OpenGL\Buffers</Filter>
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h">
-      <Filter>Platform\OpenGL\Buffers</Filter>
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h">
-      <Filter>Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Platform\OpenGL\OpenGLRendererAPI.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>Src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\OpenGLShader.h">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>Src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Platform\OpenGL\OpenGLVertexArray.h">
-      <Filter>Platform\OpenGL</Filter>
+    <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTexture.h">
+      <Filter>Src\Platform\OpenGL\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTexture2D.h">
+      <Filter>Src\Platform\OpenGL\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTextureCube.h">
+      <Filter>Src\Platform\OpenGL\Textures</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsTime.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\stb\stb_image.h">
+      <Filter>Vendor\stb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Crpch.cpp" />
-    <ClCompile Include="Src\Crystal\Application.cpp">
-      <Filter>Crystal</Filter>
+    <ClCompile Include="Src\Crpch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Core\Application.cpp">
+      <Filter>Src\Crystal\Core</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\ImGui\ImGuiBuild.cpp">
-      <Filter>Crystal\ImGui</Filter>
+      <Filter>Src\Crystal\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\ImGui\ImGuiLayer.cpp">
-      <Filter>Crystal\ImGui</Filter>
+      <Filter>Src\Crystal\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Layers\Layer.cpp">
-      <Filter>Crystal\Layers</Filter>
+      <Filter>Src\Crystal\Layers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Layers\LayerStack.cpp">
-      <Filter>Crystal\Layers</Filter>
+      <Filter>Src\Crystal\Layers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Logging\Log.cpp">
-      <Filter>Crystal\Logging</Filter>
+      <Filter>Src\Crystal\Logging</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Buffers\BufferLayout.cpp">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Buffers\IndexBuffer.cpp">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Buffers\VertexBuffer.cpp">
-      <Filter>Crystal\Renderer\Buffers</Filter>
+      <Filter>Src\Crystal\Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Cameras\Camera.cpp">
+      <Filter>Src\Crystal\Renderer\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Cameras\OrthographicCamera.cpp">
-      <Filter>Crystal\Renderer\Cameras</Filter>
+      <Filter>Src\Crystal\Renderer\Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\Renderer\RenderCommand.cpp">
-      <Filter>Crystal\Renderer</Filter>
+    <ClCompile Include="Src\Crystal\Renderer\Framebuffer.cpp">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Mesh.cpp">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\RenderCommandQueue.cpp">
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp">
-      <Filter>Crystal\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Crystal\Renderer\RendererAPI.cpp">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Shader.cpp">
-      <Filter>Crystal\Renderer</Filter>
+      <Filter>Src\Crystal\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Crystal\Renderer\VertexArray.cpp">
-      <Filter>Crystal\Renderer</Filter>
+    <ClCompile Include="Src\Crystal\Renderer\Textures\Texture.cpp">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Textures\Texture2D.cpp">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Textures\TextureCube.cpp">
+      <Filter>Src\Crystal\Renderer\Textures</Filter>
     </ClCompile>
     <ClCompile Include="Src\Crystal\Time\Time.cpp">
-      <Filter>Crystal\Time</Filter>
+      <Filter>Src\Crystal\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLFramebuffer.cpp">
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.cpp">
-      <Filter>Platform\OpenGL\Buffers</Filter>
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.cpp">
-      <Filter>Platform\OpenGL\Buffers</Filter>
+      <Filter>Src\Platform\OpenGL\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>Src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLRendererAPI.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>Src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\OpenGLShader.cpp">
-      <Filter>Platform\OpenGL</Filter>
+      <Filter>Src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Platform\OpenGL\OpenGLVertexArray.cpp">
-      <Filter>Platform\OpenGL</Filter>
+    <ClCompile Include="Src\Platform\OpenGL\Textures\OpenGLTexture2D.cpp">
+      <Filter>Src\Platform\OpenGL\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\Textures\OpenGLTextureCube.cpp">
+      <Filter>Src\Platform\OpenGL\Textures</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsTime.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>Src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\stb\stb_image.cpp">
+      <Filter>Vendor\stb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

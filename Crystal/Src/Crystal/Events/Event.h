@@ -3,6 +3,7 @@
 #include "Crpch.h"
 
 #include "Crystal/Core/Core.h"
+#include "Crystal/Logging/Log.h"
 
 namespace Crystal
 {
@@ -68,10 +69,10 @@ namespace Crystal
 			if (mEvent.GetEventType() == T::GetStaticType())
 			{
 				mEvent.bHandled = func(*(T*)&mEvent);
-				CL_CORE_LOG_TRACE("{0}", mEvent.ToString());
+				//CL_CORE_LOG_TRACE("{0}", mEvent.ToString());
 				return true;
 			}
-			CL_CORE_LOG_ERROR("{0}", mEvent.ToString());
+			//CL_CORE_LOG_ERROR("{0}", mEvent.ToString());
 			return false;
 		}
 

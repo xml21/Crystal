@@ -17,6 +17,8 @@ IncludeDir["GLFW"] = "Crystal/Vendor/GLFW/include"
 IncludeDir["Glad"] = "Crystal/Vendor/Glad/include"
 IncludeDir["imgui"] = "Crystal/Vendor/imgui"
 IncludeDir["glm"] = "Crystal/Vendor/glm"
+IncludeDir["stb"] = "Crystal/Vendor/stb"
+
 
 include "Crystal/Vendor/GLFW"
 include "Crystal/Vendor/Glad"
@@ -40,7 +42,9 @@ project "Crystal"
 		"%{prj.name}/Src/**.h",
 		"%{prj.name}/Src/**.cpp",
 		"%{prj.name}/Vendor/glm/glm/**.hpp",
-		"%{prj.name}/Vendor/glm/glm/**.inl"
+		"%{prj.name}/Vendor/glm/glm/**.inl",
+		"%{prj.name}/Vendor/stb/**.h",
+		"%{prj.name}/Vendor/stb/**.cpp"
 	}
 
 	defines
@@ -55,7 +59,9 @@ project "Crystal"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.stb}",
+        "%{prj.name}/Vendor/assimp/include"
 	}
 
 	links
@@ -117,7 +123,8 @@ project "Sandbox"
 
 	links
 	{
-		"Crystal"
+		"Crystal",
+		"Crystal/Vendor/assimp/win64/assimp.lib"
 	}
 
 	filter "system:windows"
@@ -133,12 +140,27 @@ project "Sandbox"
 		runtime "Debug"
 		symbols "on"
 
+		links
+		{
+			"Crystal/Vendor/assimp/bin/Debug/assimp-vc141-mtd.lib"
+		}
+
 	filter "configurations:Release"
 		defines "CL_RELEASE"
 		runtime "Release"
 		optimize "on"
 
+		links
+		{
+			"Crystal/Vendor/assimp/bin/Debug/assimp-vc141-mtd.lib"
+		}
+
 	filter "configurations:Dist"
 		defines "CL_DIST"
 		runtime "Release"
 		optimize "on"
+
+		links
+		{
+			"Crystal/Vendor/assimp/bin/Debug/assimp-vc141-mtd.lib"
+		}

@@ -7,15 +7,22 @@
 
 namespace Crystal
 {
-	Ref<Shader> Shader::Create(const std::string& VertexSrc, const std::string& FragmentSrc)
+	std::vector<Ref<Crystal::Shader>> Shader::sAllShaders;
+
+	Ref<Shader> Shader::Create(const std::string& Filepath)
 	{
-		switch (Renderer::GetAPI())
+		Ref<Shader> Result = nullptr;
+
+		switch (RendererAPI::GetAPI())
 		{
-		case API::NONE:		CL_CORE_ASSERT(false, "RendererAPI::None is currently not supported"); return nullptr;
-		case API::OpenGL:	return std::make_shared<OpenGLShader>(VertexSrc, FragmentSrc);
+		case API::NONE: return nullptr;
+		case API::OpenGL: Result = std::make_shared<OpenGLShader>(Filepath);
 		}
 
-		CL_CORE_ASSERT(false, "Unknown RendererAPI!");
-		return nullptr;
+		sAllShaders.push_back(Result);
+		return Result;
 	}
+
+	
+
 }

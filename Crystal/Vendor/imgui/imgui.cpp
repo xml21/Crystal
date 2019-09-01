@@ -625,7 +625,7 @@ CODE
  A: Short explanation:
     - You may use functions such as ImGui::Image(), ImGui::ImageButton() or lower-level ImDrawList::AddImage() to emit draw calls that will use your own textures.
     - Actual textures are identified in a way that is up to the user/engine. Those identifiers are stored and passed as ImTextureID (void*) value.
-    - Loading image files from the disk and turning them into a texture is not within the scope of Dear ImGui (for a good reason).
+    - Loading image files from the disk and turning them into a texture is not within the Ref of Dear ImGui (for a good reason).
       Please read documentations or tutorials on your graphics API to understand how to display textures on the screen before moving onward.
 
     Long explanation:
@@ -666,7 +666,7 @@ CODE
         MyTexture* texture = (MyTexture*)pcmd->TextureId;
         MyEngineBindTexture2D(texture);
 
-    Once you understand this design you will understand that loading image files and turning them into displayable textures is not within the scope of Dear ImGui.
+    Once you understand this design you will understand that loading image files and turning them into displayable textures is not within the Ref of Dear ImGui.
     This is by design and is actually a good thing, because it means your code has full control over your data types and how you display them.
     If you want to display an image file (e.g. PNG file) into the screen, please refer to documentation and tutorials for the graphics API you are using.
 
@@ -722,7 +722,7 @@ CODE
        Button("OK");          // Label = "OK",     ID = hash of (..., "OK")
        Button("Cancel");      // Label = "Cancel", ID = hash of (..., "Cancel")
 
-   - ID are uniquely scoped within windows, tree nodes, etc. which all pushes to the ID stack. Having
+   - ID are uniquely Refd within windows, tree nodes, etc. which all pushes to the ID stack. Having
      two buttons labeled "OK" in different windows or different tree locations is fine.
      We used "..." above to signify whatever was already pushed to the ID stack previously:
 
@@ -767,7 +767,7 @@ CODE
        Begin(buf);            // Variable title,   ID = hash of "MyGame"
 
    - Solving ID conflict in a more general manner:
-     Use PushID() / PopID() to create scopes and manipulate the ID stack, as to avoid ID conflicts
+     Use PushID() / PopID() to create Refs and manipulate the ID stack, as to avoid ID conflicts
      within the same window. This is the most convenient way of distinguishing ID when iterating and
      creating many UI elements programmatically.
      You can push a pointer, a string or an integer value into the ID stack.
@@ -807,7 +807,7 @@ CODE
          PopID();
        PopID();
 
-   - Tree nodes implicitly creates a scope for you by calling PushID().
+   - Tree nodes implicitly creates a Ref for you by calling PushID().
 
        Button("Click");       // Label = "Click",  ID = hash of (..., "Click")
        if (TreeNode("node"))  // <-- this function call will do a PushID() for you (unless instructed not to, with a special flag)
@@ -920,7 +920,7 @@ CODE
       are not configurable and not the same across implementations.
     - If you are finding your UI traversal cost to be too large, make sure your string usage is not leading to excessive amount
       of heap allocations. Consider using literals, statically sized buffers and your own helper functions. A common pattern
-      is that you will need to build lots of strings on the fly, and their maximum length can be easily be scoped ahead.
+      is that you will need to build lots of strings on the fly, and their maximum length can be easily be Refd ahead.
       One possible implementation of a helper to facilitate printf-style building of strings: https://github.com/ocornut/Str
       This is a small helper where you can instance strings with configurable local buffers length. Many game engines will
       provide similar or better string helpers.
@@ -3661,7 +3661,7 @@ void ImGui::NewFrame()
     }
 
     g.Time += g.IO.DeltaTime;
-    g.FrameScopeActive = true;
+    g.FrameRefActive = true;
     g.FrameCount += 1;
     g.TooltipOverrideCount = 0;
     g.WindowsActiveCount = 0;
@@ -3827,7 +3827,7 @@ void ImGui::NewFrame()
     // This fallback is particularly important as it avoid ImGui:: calls from crashing.
     SetNextWindowSize(ImVec2(400,400), ImGuiCond_FirstUseEver);
     Begin("Debug##Default");
-    g.FrameScopePushedImplicitWindow = true;
+    g.FrameRefPushedImplicitWindow = true;
 
 #ifdef IMGUI_ENABLE_TEST_ENGINE
     ImGuiTestEngineHook_PostNewFrame(&g);
@@ -4138,7 +4138,7 @@ void ImGui::EndFrame()
     IM_ASSERT(g.Initialized);
     if (g.FrameCountEnded == g.FrameCount)          // Don't process EndFrame() multiple times.
         return;
-    IM_ASSERT(g.FrameScopeActive && "Forgot to call ImGui::NewFrame()?");
+    IM_ASSERT(g.FrameRefActive && "Forgot to call ImGui::NewFrame()?");
 
     // Notify OS when our Input Method Editor cursor has moved (e.g. CJK inputs using Microsoft IME)
     if (g.PlatformIO.Platform_SetImeInputPos && (g.PlatformImeLastPos.x == FLT_MAX || ImLengthSqr(g.PlatformImePos - g.PlatformImeLastPos) > 0.0001f))
@@ -4166,7 +4166,7 @@ void ImGui::EndFrame()
     }
 
     // Hide implicit/fallback "Debug" window if it hasn't been used
-    g.FrameScopePushedImplicitWindow = false;
+    g.FrameRefPushedImplicitWindow = false;
     if (g.CurrentWindow && !g.CurrentWindow->WriteAccessed)
         g.CurrentWindow->Active = false;
     End();
@@ -4198,7 +4198,7 @@ void ImGui::EndFrame()
     }
 
     // End frame
-    g.FrameScopeActive = false;
+    g.FrameRefActive = false;
     g.FrameCountEnded = g.FrameCount;
 
     // Initiate moving window + handle left-click and right-click focus
@@ -5513,7 +5513,7 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
     ImGuiContext& g = *GImGui;
     const ImGuiStyle& style = g.Style;
     IM_ASSERT(name != NULL && name[0] != '\0');     // Window name required
-    IM_ASSERT(g.FrameScopeActive);                  // Forgot to call ImGui::NewFrame()
+    IM_ASSERT(g.FrameRefActive);                  // Forgot to call ImGui::NewFrame()
     IM_ASSERT(g.FrameCountEnded != g.FrameCount);   // Called ImGui::Render() or ImGui::EndFrame() and haven't called ImGui::NewFrame() again yet
 
     // Find or create
@@ -6102,7 +6102,7 @@ bool ImGui::Begin(const char* name, bool* p_open, ImGuiWindowFlags flags)
         window->HitTestHoleSize.x = window->HitTestHoleSize.y = 0;
 
         // Pressing CTRL+C while holding on a window copy its content to the clipboard
-        // This works but 1. doesn't handle multiple Begin/End pairs, 2. recursing into another Begin/End pair - so we need to work that out and add better logging scope.
+        // This works but 1. doesn't handle multiple Begin/End pairs, 2. recursing into another Begin/End pair - so we need to work that out and add better logging Ref.
         // Maybe we can support CTRL+C on every element?
         /*
         if (g.ActiveId == move_id)
@@ -6226,7 +6226,7 @@ void ImGui::End()
 {
     ImGuiContext& g = *GImGui;
 
-    if (g.CurrentWindowStack.Size <= 1 && g.FrameScopePushedImplicitWindow)
+    if (g.CurrentWindowStack.Size <= 1 && g.FrameRefPushedImplicitWindow)
     {
         IM_ASSERT(g.CurrentWindowStack.Size > 1 && "Calling End() too many times!");
         return; // FIXME-ERRORHANDLING
@@ -6241,7 +6241,7 @@ void ImGui::End()
         PopClipRect();
 
     // Stop logging
-    if (!(window->Flags & ImGuiWindowFlags_ChildWindow))    // FIXME: add more options for scope of logging
+    if (!(window->Flags & ImGuiWindowFlags_ChildWindow))    // FIXME: add more options for Ref of logging
         LogFinish();
 
     // Docking: report contents sizes to parent to allow for auto-resize
@@ -8231,7 +8231,7 @@ static void ImGui::NavProcessItem(ImGuiWindow* window, const ImRect& nav_bb, con
         if (new_best)
         {
             result->ID = id;
-            result->SelectScopeId = g.MultiSelectScopeId;
+            result->SelectRefId = g.MultiSelectRefId;
             result->Window = window;
             result->RectRel = nav_bb_rel;
         }
@@ -8243,7 +8243,7 @@ static void ImGui::NavProcessItem(ImGuiWindow* window, const ImRect& nav_bb, con
                 {
                     result = &g.NavMoveResultLocalVisibleSet;
                     result->ID = id;
-                    result->SelectScopeId = g.MultiSelectScopeId;
+                    result->SelectRefId = g.MultiSelectRefId;
                     result->Window = window;
                     result->RectRel = nav_bb_rel;
                 }
@@ -8804,7 +8804,7 @@ static void ImGui::NavUpdateMoveResult()
     {
         // Don't set NavJustMovedToId if just landed on the same spot (which may happen with ImGuiNavMoveFlags_AllowCurrentNavId)
         g.NavJustMovedToId = result->ID;
-        g.NavJustMovedToMultiSelectScopeId = result->SelectScopeId;
+        g.NavJustMovedToMultiSelectRefId = result->SelectRefId;
     }
     SetNavIDWithRectRel(result->ID, g.NavLayer, result->RectRel);
     g.NavMoveFromClampedRefRect = false;
