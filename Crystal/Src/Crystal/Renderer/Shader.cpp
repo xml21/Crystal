@@ -3,7 +3,7 @@
 #include "Shader.h"
 #include "Renderer.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
+#include "Platform/OpenGL/Shaders/OpenGLShader.h"
 
 namespace Crystal
 {

@@ -17,11 +17,11 @@ namespace Crystal
 		: mProjectionMatrix(ProjectionMatrix)
 	{
 		//Sensibility defaults ----------------------------
-		mPanSpeed = 0.0015f;
-		mRotationSpeed = 0.002f;
-		mZoomSpeed = 0.2f;
+		mPanSpeed = 0.15f;
+		mRotationSpeed = 0.3f;
+		mZoomSpeed = 1.0f;
 
-		mPosition = { -100, 100, 100 };
+		mPosition = { -5, 5, 5 };
 		mRotation = glm::vec3(90.0f, 0.0f, 0.0f);
 
 		mFocalPoint = glm::vec3(0.0f);
@@ -37,13 +37,15 @@ namespace Crystal
 		//TODO
 	}
 
-	void Camera::Update()
+	void Camera::Update(float DeltaTime)
 	{
 		if (Input::IsKeyPressed(GLFW_KEY_LEFT_ALT))
 		{
 			const glm::vec2& mouse{ Input::GetMouseX(), Input::GetMouseY() };
 			glm::vec2 Delta = mouse - mInitialMousePosition;
 			mInitialMousePosition = mouse;
+
+			Delta *= DeltaTime;
 
 			if (Input::IsMouseButtonPressed(GLFW_MOUSE_BUTTON_MIDDLE))
 				MousePan(Delta);
@@ -55,9 +57,11 @@ namespace Crystal
 
 		mPosition = CalculatePosition();
 
-		glm::quat orientation = GetOrientation();
-		mRotation = glm::eulerAngles(orientation) * (180.0f / (float)M_PI);
-		mViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 1)) * glm::toMat4(glm::conjugate(orientation)) * glm::translate(glm::mat4(1.0f), -mPosition);
+		glm::quat Orientation = GetOrientation();
+		mRotation = glm::eulerAngles(Orientation) * (180.0f / (float)M_PI);
+		mViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 1)) * glm::toMat4(glm::conjugate(Orientation)) * glm::translate(glm::mat4(1.0f), -mPosition);
+		mViewMatrix = glm::translate(glm::mat4(1.0f), mPosition) * glm::toMat4(Orientation);
+		mViewMatrix = glm::inverse(mViewMatrix);
 	}
 
 	glm::vec3 Camera::GetUpDirection()

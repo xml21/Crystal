@@ -49,6 +49,9 @@
     <Filter Include="Src\Platform\OpenGL\Buffers">
       <UniqueIdentifier>{91E08D43-FDED-BB29-86D4-B714F2E087E0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Platform\OpenGL\Shaders">
+      <UniqueIdentifier>{EE457D41-5A53-AB27-E339-A7124F4677DE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Src\Platform\OpenGL\Textures">
       <UniqueIdentifier>{88154AAD-74D0-3959-1D88-B2A3092284E9}</UniqueIdentifier>
     </Filter>
@@ -70,6 +73,9 @@
       <Filter>Src</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Core\Application.h">
+      <Filter>Src\Crystal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Core\Buffer.h">
       <Filter>Src\Crystal\Core</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Core\Core.h">
@@ -135,6 +141,9 @@
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h">
       <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\Material.h">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Mesh.h">
       <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
@@ -148,6 +157,9 @@
       <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Shader.h">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crystal\Renderer\ShaderUniform.h">
       <Filter>Src\Crystal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Crystal\Renderer\Textures\Texture.h">
@@ -174,8 +186,11 @@
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h">
       <Filter>Src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Platform\OpenGL\OpenGLShader.h">
-      <Filter>Src\Platform\OpenGL</Filter>
+    <ClInclude Include="Src\Platform\OpenGL\Shaders\OpenGLShader.h">
+      <Filter>Src\Platform\OpenGL\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\OpenGL\Shaders\OpenGLShaderUniform.h">
+      <Filter>Src\Platform\OpenGL\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTexture.h">
       <Filter>Src\Platform\OpenGL\Textures</Filter>
@@ -239,6 +254,9 @@
     <ClCompile Include="Src\Crystal\Renderer\Framebuffer.cpp">
       <Filter>Src\Crystal\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Crystal\Renderer\Material.cpp">
+      <Filter>Src\Crystal\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Crystal\Renderer\Mesh.cpp">
       <Filter>Src\Crystal\Renderer</Filter>
     </ClCompile>
@@ -278,8 +296,11 @@
     <ClCompile Include="Src\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>Src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Platform\OpenGL\OpenGLShader.cpp">
-      <Filter>Src\Platform\OpenGL</Filter>
+    <ClCompile Include="Src\Platform\OpenGL\Shaders\OpenGLShader.cpp">
+      <Filter>Src\Platform\OpenGL\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\OpenGL\Shaders\OpenGLShaderUniform.cpp">
+      <Filter>Src\Platform\OpenGL\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="Src\Platform\OpenGL\Textures\OpenGLTexture2D.cpp">
       <Filter>Src\Platform\OpenGL\Textures</Filter>

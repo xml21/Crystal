@@ -9,7 +9,7 @@ namespace Crystal {
 		Camera(const glm::mat4& ProjectionMatrix);
 
 		void Focus();
-		void Update();
+		void Update(float DeltaTime);
 
 		inline float GetDistance() const { return mDistance; }
 		inline void SetDistance(float Distance) { mDistance = Distance; }

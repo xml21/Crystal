@@ -11,19 +11,19 @@
 
 namespace Crystal
 {
-	OpenGLTexture2D::OpenGLTexture2D(TextureFormat Format, unsigned int Width, unsigned int Height)
-		: mFormat(Format), mWidth(Width), mHeight(Height)
+	OpenGLTexture2D::OpenGLTexture2D(TextureFormat Format, unsigned int Width, unsigned int Height, TextureWrap Wrap)
+		: mFormat(Format), mWidth(Width), mHeight(Height), mWrap(Wrap)
 	{
 		auto self = this;
 
 		CL_RENDER_1(self, {
-			glGenTextures(1, &self->mRendererID);
 			glBindTexture(GL_TEXTURE_2D, self->mRendererID);
 
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+			GLenum wrap = self->mWrap == TextureWrap::Clamp ? GL_CLAMP_TO_EDGE : GL_REPEAT;
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrap);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrap);
 			glTextureParameterf(self->mRendererID, GL_TEXTURE_MAX_ANISOTROPY, RendererAPI::GetCapabilities().MaxAnisotropy);
 
 			glTexImage2D(GL_TEXTURE_2D, 0, CrystalToOpenGLTextureFormat(self->mFormat), self->mWidth, self->mHeight, 0, CrystalToOpenGLTextureFormat(self->mFormat), GL_UNSIGNED_BYTE, nullptr);
@@ -38,7 +38,7 @@ namespace Crystal
 	{
 		int width, height, channels;
 		CL_CORE_LOG_INFO("Loading texture {0}, sRGB={1}", Path, sRGB);
-		mImageData = stbi_load(Path.c_str(), &width, &height, &channels, sRGB ? STBI_rgb : STBI_rgb_alpha);
+		mImageData.Data = stbi_load(Path.c_str(), &width, &height, &channels, sRGB ? STBI_rgb : STBI_rgb_alpha);
 
 		mWidth = width;
 		mHeight = height;
@@ -55,7 +55,7 @@ namespace Crystal
 				glTextureParameteri(self->mRendererID, GL_TEXTURE_MIN_FILTER, Levels > 1 ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
 				glTextureParameteri(self->mRendererID, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-				glTextureSubImage2D(self->mRendererID, 0, 0, 0, self->mWidth, self->mHeight, GL_RGB, GL_UNSIGNED_BYTE, self->mImageData);
+				glTextureSubImage2D(self->mRendererID, 0, 0, 0, self->mWidth, self->mHeight, GL_RGB, GL_UNSIGNED_BYTE, self->mImageData.Data);
 				glGenerateTextureMipmap(self->mRendererID);
 			}
 			else
@@ -68,12 +68,12 @@ namespace Crystal
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-				glTexImage2D(GL_TEXTURE_2D, 0, CrystalToOpenGLTextureFormat(self->mFormat), self->mWidth, self->mHeight, 0, sRGB ? GL_SRGB8 : CrystalToOpenGLTextureFormat(self->mFormat), GL_UNSIGNED_BYTE, self->mImageData);
+				glTexImage2D(GL_TEXTURE_2D, 0, CrystalToOpenGLTextureFormat(self->mFormat), self->mWidth, self->mHeight, 0, sRGB ? GL_SRGB8 : CrystalToOpenGLTextureFormat(self->mFormat), GL_UNSIGNED_BYTE, self->mImageData.Data);
 				glGenerateMipmap(GL_TEXTURE_2D);
 
 				glBindTexture(GL_TEXTURE_2D, 0);
 			}
-			stbi_image_free(self->mImageData);
+			stbi_image_free(self->mImageData.Data);
 		});
 	}
 

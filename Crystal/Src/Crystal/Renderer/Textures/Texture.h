@@ -29,6 +29,8 @@ namespace Crystal
 
 		virtual RendererID GetRendererID() const = 0;
 
+		static uint32_t GetBPP(TextureFormat Format);
+
 		virtual void Bind(uint32_t Slot = 0) const = 0;
 	};
 }

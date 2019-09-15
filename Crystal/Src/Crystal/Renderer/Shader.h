@@ -4,7 +4,10 @@
 #include "glm/glm.hpp"
 
 #include "Crystal/Core/Core.h"
+#include "Crystal/Core/Buffer.h"
+
 #include "Crystal/Renderer/Renderer.h"
+#include "Crystal/Renderer/ShaderUniform.h"
 
 namespace Crystal
 {
@@ -104,12 +107,14 @@ namespace Crystal
 	class Shader
 	{
 	public:
+		using ShaderReloadedCallback = std::function<void()>;
+
 		virtual ~Shader() = default;
 
 		virtual void Reload() = 0;
 
-		virtual void Bind() const = 0;
-		virtual void UnBind() const = 0;
+		virtual void Bind() = 0;
+		virtual void UnBind() = 0;
 
 		virtual void UploadUniformBuffer(const UniformBufferBase& uniformBuffer) = 0;
 
@@ -118,11 +123,24 @@ namespace Crystal
 		//TMP ----------------------------------------------------------------------
 		virtual void SetFloat(const std::string& Name, float Value) = 0;
 		virtual void SetMat4(const std::string& Name, const glm::mat4& Value) = 0;
+		virtual void SetMat4FromRenderThread(const std::string& Name, const glm::mat4& Value) = 0;
 		//TMP ----------------------------------------------------------------------
 
 		//TMP ----------------------------------------------------------------------
 		static Ref<Shader> Create(const std::string& Filepath);
 		//TMP ----------------------------------------------------------------------
+
+		virtual void SetVSMaterialUniformBuffer(Buffer buffer) = 0;
+		virtual void SetPSMaterialUniformBuffer(Buffer buffer) = 0;
+
+		virtual const ShaderUniformBufferList& GetVSRendererUniforms() const = 0;
+		virtual const ShaderUniformBufferList& GetPSRendererUniforms() const = 0;
+		virtual const ShaderUniformBufferDeclaration& GetVSMaterialUniformBuffer() const = 0;
+		virtual const ShaderUniformBufferDeclaration& GetPSMaterialUniformBuffer() const = 0;
+
+		virtual const ShaderResourceList& GetResources() const = 0;
+
+		virtual void AddShaderReloadedCallback(const ShaderReloadedCallback& Callback) = 0;
 
 		//TMP ----------------------------------------------------------------------
 		static std::vector<Ref<Shader>> sAllShaders;

@@ -42,6 +42,16 @@ namespace Crystal
 		mContext->SwapBuffers();
 	}
 
+	void WindowsWindow::SetVSync(bool bEnabled)
+	{
+		if (bEnabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		mData.bVSync = bEnabled;
+	}
+
 	void WindowsWindow::Init(const WindowProps & props)
 	{
 		mData.Title = props.Title;

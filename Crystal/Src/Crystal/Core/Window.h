@@ -33,6 +33,7 @@ namespace Crystal
 		virtual unsigned int GetHeight() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFunction& callback) = 0;
+		virtual void SetVSync(bool bEnabled) = 0;
 
 		virtual void* GetNativeWindow() const = 0;
 

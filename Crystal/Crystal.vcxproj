@@ -143,6 +143,7 @@
     <ClInclude Include="Src\Crpch.h" />
     <ClInclude Include="Src\Crystal.h" />
     <ClInclude Include="Src\Crystal\Core\Application.h" />
+    <ClInclude Include="Src\Crystal\Core\Buffer.h" />
     <ClInclude Include="Src\Crystal\Core\Core.h" />
     <ClInclude Include="Src\Crystal\Core\EntryPoint.h" />
     <ClInclude Include="Src\Crystal\Core\Window.h" />
@@ -164,11 +165,13 @@
     <ClInclude Include="Src\Crystal\Renderer\Cameras\OrthographicCamera.h" />
     <ClInclude Include="Src\Crystal\Renderer\Framebuffer.h" />
     <ClInclude Include="Src\Crystal\Renderer\GraphicsContext.h" />
+    <ClInclude Include="Src\Crystal\Renderer\Material.h" />
     <ClInclude Include="Src\Crystal\Renderer\Mesh.h" />
     <ClInclude Include="Src\Crystal\Renderer\RenderCommandQueue.h" />
     <ClInclude Include="Src\Crystal\Renderer\Renderer.h" />
     <ClInclude Include="Src\Crystal\Renderer\RendererAPI.h" />
     <ClInclude Include="Src\Crystal\Renderer\Shader.h" />
+    <ClInclude Include="Src\Crystal\Renderer\ShaderUniform.h" />
     <ClInclude Include="Src\Crystal\Renderer\Textures\Texture.h" />
     <ClInclude Include="Src\Crystal\Renderer\Textures\Texture2D.h" />
     <ClInclude Include="Src\Crystal\Renderer\Textures\TextureCube.h" />
@@ -177,7 +180,8 @@
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLIndexBuffer.h" />
     <ClInclude Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.h" />
     <ClInclude Include="Src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="Src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="Src\Platform\OpenGL\Shaders\OpenGLShader.h" />
+    <ClInclude Include="Src\Platform\OpenGL\Shaders\OpenGLShaderUniform.h" />
     <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTexture.h" />
     <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTexture2D.h" />
     <ClInclude Include="Src\Platform\OpenGL\Textures\OpenGLTextureCube.h" />
@@ -202,6 +206,7 @@
     <ClCompile Include="Src\Crystal\Renderer\Cameras\Camera.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Cameras\OrthographicCamera.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="Src\Crystal\Renderer\Material.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Mesh.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\RenderCommandQueue.cpp" />
     <ClCompile Include="Src\Crystal\Renderer\Renderer.cpp" />
@@ -215,7 +220,8 @@
     <ClCompile Include="Src\Platform\OpenGL\Buffers\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="Src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="Src\Platform\OpenGL\Shaders\OpenGLShader.cpp" />
+    <ClCompile Include="Src\Platform\OpenGL\Shaders\OpenGLShaderUniform.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\Textures\OpenGLTexture2D.cpp" />
     <ClCompile Include="Src\Platform\OpenGL\Textures\OpenGLTextureCube.cpp" />
     <ClCompile Include="Src\Platform\Windows\WindowsInput.cpp" />
@@ -235,6 +241,15 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+    <ItemGroup>
+    <CopyFileToFolders Include="vendor\assimp\bin\Debug\assimp-vc141-mtd.dll">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)Bin\Debug-windows-x86_64\Sandbox\;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">$(SolutionDir)Bin\Debug-windows-x86_64\Sandbox\;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)Bin\Debug-windows-x86_64\Sandbox\;%(DestinationFolders)</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

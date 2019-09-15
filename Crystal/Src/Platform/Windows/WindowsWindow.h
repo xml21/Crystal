@@ -21,7 +21,8 @@ namespace Crystal
 
 		inline void* GetNativeWindow() const { return mWindow; }
 
-		void SetEventCallback(const EventCallbackFunction& callback) override { mData.EventCallback = callback; };
+		virtual void SetEventCallback(const EventCallbackFunction& callback) override { mData.EventCallback = callback; };
+		virtual void SetVSync(bool bEnabled) override;
 
 	private:
 		virtual void Init(const WindowProps& props);
