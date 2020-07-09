@@ -30,16 +30,18 @@ namespace Crystal
 		CL_CORE_ASSERT(!sInstance, "Application already exists!");
 		sInstance = this;
 
-		mWindow = Ref<Window>(Window::Create());
+		mWindow = std::unique_ptr<Window>(Window::Create());
 		
-		mTimer = Ref<Time>(Time::Create());
+		mTimer = std::shared_ptr<Time>(Time::Create());
 
 		mWindow->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		mWindow->SetVSync(false);
 
 		mImGuiLayer = std::make_shared<ImGuiLayer>();
 		PushOverlay(mImGuiLayer);
 
 		Renderer::Init();
+		Renderer::Get().WaitAndRender();
 	}
 
 	void Application::Run()
@@ -50,23 +52,28 @@ namespace Crystal
 
 			//--------------- Delta Time calculation ------------------
 			float Time = mTimer->GetSeconds(); //Current time (in seconds)
-			float DeltaTime = Time - mLastFrameTime; //Delta time
+			float TimeMilliseconds = mTimer->GetMilliSeconds(); //Current time (in milliseconds)
+			mDeltaTime = Time - mLastFrameTime; //Delta time
+			mDeltaTimeMilliseconds = TimeMilliseconds - mLastFrameTimeMilliseconds; //Delta time (in milliseconds)
 			mLastFrameTime = Time; //Previous time
+			mLastFrameTimeMilliseconds = TimeMilliseconds; //Previous time (in milliseconds)
 			//--------------- Delta Time calculation ------------------
 
 			if (!mMinimized)
 			{
 				for (Ref<Layer> layer : mLayerStack)
-					layer->OnUpdate();
+					layer->OnUpdate(mDeltaTime);
+
+				Application* app = this;
+				CL_RENDER_1(app, { app->RenderImGui(); });
+
+				Renderer::Get().WaitAndRender();
 			}
-
-			Application* app = this;
-			CL_RENDER_1(app, { app->RenderImGui(); });
-
-			Renderer::Get().WaitAndRender();
 
 			mWindow->OnUpdate();
 		}
+
+		OnShutdown();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -104,6 +111,7 @@ namespace Crystal
 		ImGui::Text("Vendor: %s", caps.Vendor.c_str());
 		ImGui::Text("Renderer: %s", caps.Renderer.c_str());
 		ImGui::Text("Version: %s", caps.Version.c_str());
+		ImGui::Text("Frames Per Second: %.0f\n", 1000/mDeltaTimeMilliseconds);
 		ImGui::End();
 
 		for (Ref<Layer> layer : mLayerStack)

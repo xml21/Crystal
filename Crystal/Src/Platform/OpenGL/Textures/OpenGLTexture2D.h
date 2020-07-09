@@ -2,6 +2,7 @@
 
 #include "Crystal/Renderer/Textures/Texture2D.h"
 #include "Crystal/Renderer/RendererAPI.h"
+#include "Crystal/Core/Buffer.h"
 
 namespace Crystal
 {
@@ -9,7 +10,7 @@ namespace Crystal
 	{
 	public:
 		OpenGLTexture2D(const std::string& Path, bool sRGB);
-		OpenGLTexture2D(TextureFormat Format, unsigned int Width, unsigned int Height);
+		OpenGLTexture2D(TextureFormat Format, unsigned int Width, unsigned int Height, TextureWrap Wrap);
 		virtual ~OpenGLTexture2D();
 
 		virtual TextureFormat GetFormat() const { return mFormat; }
@@ -25,9 +26,11 @@ namespace Crystal
 		uint32_t mWidth, mHeight;
 		RendererID mRendererID;
 
+		TextureWrap mWrap = TextureWrap::Clamp;
+
 		TextureFormat mFormat;
 
-		unsigned char* mImageData;
+		Buffer mImageData;
 
 		std::string mFilePath;
 	};

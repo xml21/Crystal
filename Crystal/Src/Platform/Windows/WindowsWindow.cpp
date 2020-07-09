@@ -25,7 +25,6 @@ namespace Crystal
 		return new WindowsWindow(props);
 	}
 
-
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
 		Init(props);
@@ -40,6 +39,24 @@ namespace Crystal
 	{
 		glfwPollEvents();
 		mContext->SwapBuffers();
+	}
+
+
+	std::pair<float, float> WindowsWindow::GetWindowPos() const
+	{
+		int x, y;
+		glfwGetWindowPos(mWindow, &x, &y);
+		return { x, y };
+	}
+
+	void WindowsWindow::SetVSync(bool bEnabled)
+	{
+		if (bEnabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		mData.bVSync = bEnabled;
 	}
 
 	void WindowsWindow::Init(const WindowProps & props)

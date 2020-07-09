@@ -44,6 +44,7 @@ namespace Crystal
 		inline static API GetAPI() { return sAPI; }
 
 	private:
+		static void LoadRequiredAssets();
 		static API sAPI;
 	};
 }

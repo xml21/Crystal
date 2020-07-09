@@ -58,15 +58,15 @@ namespace Crystal
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
-		Ref<Window> mWindow;
-		Ref<Time> mTimer;
-		Ref<ImGuiLayer> mImGuiLayer;
+		std::unique_ptr<Window> mWindow;
+		std::shared_ptr<Time> mTimer;
+		std::shared_ptr<ImGuiLayer> mImGuiLayer;
 
 		bool mRunning = true, mMinimized = false;
 
 		LayerStack mLayerStack;
 
-		float mLastFrameTime = 0.0f;
+		float mLastFrameTime = 0.0f, mDeltaTime = 0.0f, mDeltaTimeMilliseconds = 0.0f, mLastFrameTimeMilliseconds = 0.0f; //Delta in milliseconds for better accuracy in fps counting
 
 		static Application* sInstance;
 	};

@@ -1,0 +1,280 @@
+[18:57:20] Crystal: Initialized Core Log
+[18:57:20] Application: Initialized Client Log
+[18:57:21] Crystal : OpenGL Info :
+[18:57:21] Crystal : Vendor : NVIDIA Corporation
+[18:57:21] Crystal : Renderer : GeForce GTX 1080 8GB / PCIe / SSE2
+[18:57:21] Crystal : Version : 4.6.0 NVIDIA 418.91
+[18:57:21] Crystal : Loading mesh : Assets / Meshes / Model.fbx
+[18:57:21] Crystal : Loading mesh : Assets / Models / Sphere.fbx > Hierarchy
+    Sphere01
+    Sphere02
+    Sphere03
+    Sphere04
+    Sphere05
+    Sphere06
+    Sphere07
+    Sphere08 > Shaders
+    > simplepbr.glsl
+        Reload
+    > quad.glsl
+        Reload
+    > hdr.glsl
+        Reload
+(x)
+Spheres ( )
+Model
+R:-2147483648 G:-2147483648 B:-2147483648 A:-2147483648
+Clear Color
+-0.500 -0.500 1.000
+Light Dir
+R:255 G:255 B:255
+Light Radiance
+0.300
+Light Multiplier
+1.000
+Exposure
+Camera Forward: 0.50, -0.71, 0.50
+--------------------------------
+Mesh
+cerberus.fbx
+...
+--------------------------------
+Shader Parameters
+[ ]
+Radiance Prefiltering
+0.000
+Env Map Rotation
+--------------------------------
+
+## Albedo ##
+[ ]
+Use
+[x]
+sRGB
+Color
+
+## Normals ##
+[ ]
+Use
+
+## Metalness ##
+[ ]
+Use 1.000
+Value
+
+## Roughness ##
+[ ]
+Use 0.500
+Value
+--------------------------------
+Docking (?)
+[18:57:20] Crystal: Initialized Core Log
+[18:57:20] Application: Initialized Client Log
+[18:57:21] Crystal : OpenGL Info :
+[18:57:21] Crystal : Vendor : NVIDIA Corporation
+[18:57:21] Crystal : Renderer : GeForce GTX 1080 8GB / PCIe / SSE2
+[18:57:21] Crystal : Version : 4.6.0 NVIDIA 418.91
+[18:57:21] Crystal : Loading mesh : Assets / Meshes / Model.fbx
+[18:57:21] Crystal : Loading mesh : Assets / Models / Sphere.fbx > Hierarchy
+    Sphere01
+    Sphere02
+    Sphere03
+    Sphere04
+    Sphere05
+    Sphere06
+    Sphere07
+    Sphere08 > Shaders
+    > simplepbr.glsl
+        Reload
+    > quad.glsl
+        Reload
+    > hdr.glsl
+        Reload
+(x)
+Spheres ( )
+Model
+R:-2147483648 G:-2147483648 B:-2147483648 A:-2147483648
+Clear Color
+-0.500 -0.500 1.000
+Light Dir
+R:255 G:255 B:255
+Light Radiance
+0.300
+Light Multiplier
+1.000
+Exposure
+Camera Forward: 0.50, -0.71, 0.50
+--------------------------------
+Mesh
+cerberus.fbx
+...
+--------------------------------
+Shader Parameters
+[ ]
+Radiance Prefiltering
+0.000
+Env Map Rotation
+--------------------------------
+
+## Albedo ##
+[ ]
+Use
+[x]
+sRGB
+Color
+
+## Normals ##
+[ ]
+Use
+
+## Metalness ##
+[ ]
+Use 1.000
+Value
+
+## Roughness ##
+[ ]
+Use 0.500
+Value
+--------------------------------
+Docking (?)
+fsf[18:57:20] Crystal: Initialized Core Log
+[18:57:20] Application: Initialized Client Log
+[18:57:21] Crystal : OpenGL Info :
+[18:57:21] Crystal : Vendor : NVIDIA Corporation
+[18:57:21] Crystal : Renderer : GeForce GTX 1080 8GB / PCIe / SSE2
+[18:57:21] Crystal : Version : 4.6.0 NVIDIA 418.91
+[18:57:21] Crystal : Loading mesh : Assets / Meshes / Model.fbx
+[18:57:21] Crystal : Loading mesh : Assets / Models / Sphere.fbx > Hierarchy
+    Sphere01
+    Sphere02
+    Sphere03
+    Sphere04
+    Sphere05
+    Sphere06
+    Sphere07
+    Sphere08 > Shaders
+    > simplepbr.glsl
+        Reload
+    > quad.glsl
+        Reload
+    > hdr.glsl
+        Reload
+(x)
+Spheres ( )
+Model
+-2147483648 -2147483648 -2147483648 -2147483648
+Clear Color
+-0.500 -0.500 1.000
+Light Dir
+R:255 G:255 B:255
+Light Radiance
+0.300
+Light Multiplier
+1.000
+Exposure
+Camera Forward: 0.50, -0.71, 0.50
+--------------------------------
+Mesh
+cerberus.fbx
+...
+--------------------------------
+Shader Parameters
+[ ]
+Radiance Prefiltering
+0.000
+Env Map Rotation
+--------------------------------
+
+## Albedo ##
+[ ]
+Use
+[x]
+sRGB
+Color
+
+## Normals ##
+[ ]
+Use
+
+## Metalness ##
+[ ]
+Use 1.000
+Value
+
+## Roughness ##
+[ ]
+Use 0.500
+Value
+--------------------------------
+Docking (?)
+fsf[18:57:20] Crystal: Initialized Core Log
+[18:57:20] Application: Initialized Client Log
+[18:57:21] Crystal : OpenGL Info :
+[18:57:21] Crystal : Vendor : NVIDIA Corporation
+[18:57:21] Crystal : Renderer : GeForce GTX 1080 8GB / PCIe / SSE2
+[18:57:21] Crystal : Version : 4.6.0 NVIDIA 418.91
+[18:57:21] Crystal : Loading mesh : Assets / Meshes / Model.fbx
+[18:57:21] Crystal : Loading mesh : Assets / Models / Sphere.fbx > Hierarchy
+    Sphere01
+    Sphere02
+    Sphere03
+    Sphere04
+    Sphere05
+    Sphere06
+    Sphere07
+    Sphere08 > Shaders
+    > simplepbr.glsl
+        Reload
+    > quad.glsl
+        Reload
+    > hdr.glsl
+        Reload
+(x)
+Spheres ( )
+Model
+R:-2147483648 G:-2147483648 B:-2147483648 A:-2147483648
+Clear Color
+-0.500 -0.500 1.000
+Light Dir
+R:255 G:255 B:255
+Light Radiance
+0.300
+Light Multiplier
+1.000
+Exposure
+Camera Forward: 0.50, -0.71, 0.50
+--------------------------------
+Mesh
+cerberus.fbx
+...
+--------------------------------
+Shader Parameters
+[ ]
+Radiance Prefiltering
+0.000
+Env Map Rotation
+--------------------------------
+
+## Albedo ##
+[ ]
+Use
+[x]
+sRGB
+Color
+
+## Normals ##
+[ ]
+Use
+
+## Metalness ##
+[ ]
+Use 1.000
+Value
+
+## Roughness ##
+[ ]
+Use 0.500
+Value
+--------------------------------
+Docking (?)

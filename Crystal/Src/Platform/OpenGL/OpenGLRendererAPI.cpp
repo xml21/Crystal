@@ -9,12 +9,20 @@ namespace Crystal
 	static void OpenGLLogMessage(GLenum Source, GLenum Type, GLuint Id, GLenum Severity, GLsizei Length, const GLchar* Message, const void* UserParam)
 	{
 		if (Severity != GL_DEBUG_SEVERITY_NOTIFICATION)
+		{
 			CL_CORE_LOG_ERROR("{0}", Message);
+			CL_CORE_ASSERT(false, "");
+		}
+		else
+		{
+			CL_CORE_LOG_TRACE("{0}", Message);
+		}
 	}
 
 	void RendererAPI::Init()
 	{
 		glDebugMessageCallback(OpenGLLogMessage, nullptr);
+		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 
 		unsigned int vao;
@@ -22,7 +30,6 @@ namespace Crystal
 		glBindVertexArray(vao);
 
 		glEnable(GL_DEPTH_TEST);
-		//glEnable(GL_CULL_FACE);
 		glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 		glFrontFace(GL_CCW);
 
@@ -37,6 +44,15 @@ namespace Crystal
 
 		glGetIntegerv(GL_MAX_SAMPLES, &Caps.MaxSamples);
 		glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY, &Caps.MaxAnisotropy);
+
+		GLenum Error = glGetError();
+		while (Error != GL_NO_ERROR)
+		{
+			CL_CORE_LOG_ERROR("OpenGL ERROR {0}", Error);
+			Error = glGetError();
+		}
+
+		LoadRequiredAssets();
 	}
 
 	void RendererAPI::SetClearColor(const glm::vec4& color)
@@ -55,5 +71,12 @@ namespace Crystal
 		DepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 
 		glDrawElements(GL_TRIANGLES, Count, GL_UNSIGNED_INT, nullptr);
+
+		DepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+	}
+
+	void RendererAPI::LoadRequiredAssets()
+	{
+		//TODO
 	}
 }

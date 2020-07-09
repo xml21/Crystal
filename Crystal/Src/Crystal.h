@@ -32,6 +32,7 @@ File containing all global includes for application classes
 #include "Crystal/Renderer/Textures/Texture.h"
 #include "Crystal/Renderer/Textures/Texture2D.h"
 #include "Crystal/Renderer/Textures/TextureCube.h"
+#include "Crystal/Renderer/Material.h"
 #include "Crystal/Renderer/Cameras/OrthographicCamera.h"
 // ----------------------------
 

@@ -18,10 +18,12 @@ namespace Crystal
 
 		inline unsigned int GetWidth() const override { return mData.Width; };
 		inline unsigned int GetHeight() const override { return mData.Height; };
-
 		inline void* GetNativeWindow() const { return mWindow; }
 
-		void SetEventCallback(const EventCallbackFunction& callback) override { mData.EventCallback = callback; };
+		virtual std::pair<float, float> GetWindowPos() const override;
+
+		virtual void SetEventCallback(const EventCallbackFunction& callback) override { mData.EventCallback = callback; };
+		virtual void SetVSync(bool bEnabled) override;
 
 	private:
 		virtual void Init(const WindowProps& props);
