@@ -31,6 +31,7 @@ namespace Crystal
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
+		virtual std::pair<float, float> GetWindowPos() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFunction& callback) = 0;
 		virtual void SetVSync(bool bEnabled) = 0;

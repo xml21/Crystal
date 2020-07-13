@@ -97,7 +97,7 @@ namespace Crystal {
 
 	void Material::BindTextures() const
 	{
-		for (size_t i = 0; i < mTextures.size(); i++)
+		for (uint32_t i = 0; i < mTextures.size(); i++)
 		{
 			auto& Texture = mTextures[i];
 			if (Texture)
@@ -165,7 +165,7 @@ namespace Crystal {
 			mMaterial->mShader->SetPSMaterialUniformBuffer(mPSUniformStorageBuffer);
 
 		mMaterial->BindTextures();
-		for (size_t i = 0; i < mTextures.size(); i++)
+		for (uint32_t i = 0; i < mTextures.size(); i++)
 		{
 			auto& Texture = mTextures[i];
 			if (Texture)

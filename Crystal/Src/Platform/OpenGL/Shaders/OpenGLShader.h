@@ -83,7 +83,7 @@ namespace Crystal
 		inline const ShaderResourceList& GetResources() const override { return mResources; }
 
 	private:
-		RendererID mRendererID;
+		RendererID mRendererID = 0;
 		
 		bool mLoaded = false;
 

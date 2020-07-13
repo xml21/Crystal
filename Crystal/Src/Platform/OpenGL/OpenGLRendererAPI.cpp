@@ -22,6 +22,7 @@ namespace Crystal
 	void RendererAPI::Init()
 	{
 		glDebugMessageCallback(OpenGLLogMessage, nullptr);
+		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 
 		unsigned int vao;
@@ -50,6 +51,8 @@ namespace Crystal
 			CL_CORE_LOG_ERROR("OpenGL ERROR {0}", Error);
 			Error = glGetError();
 		}
+
+		LoadRequiredAssets();
 	}
 
 	void RendererAPI::SetClearColor(const glm::vec4& color)
@@ -70,5 +73,10 @@ namespace Crystal
 		glDrawElements(GL_TRIANGLES, Count, GL_UNSIGNED_INT, nullptr);
 
 		DepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+	}
+
+	void RendererAPI::LoadRequiredAssets()
+	{
+		//TODO
 	}
 }

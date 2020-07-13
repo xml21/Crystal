@@ -29,6 +29,7 @@
 #endif
 
 #define BIT(x) (1 << x)
+#define M_PI 3.14159f
 
 #define CL_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 

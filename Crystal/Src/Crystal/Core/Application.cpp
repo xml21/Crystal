@@ -41,6 +41,7 @@ namespace Crystal
 		PushOverlay(mImGuiLayer);
 
 		Renderer::Init();
+		Renderer::Get().WaitAndRender();
 	}
 
 	void Application::Run()

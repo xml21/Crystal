@@ -157,10 +157,10 @@ namespace Crystal
 		}
 
 		mVertexBuffer = VertexBuffer::Create();
-		mVertexBuffer->SetData(mVertices.data(), mVertices.size() * sizeof(Vertex));
+		mVertexBuffer->SetData(mVertices.data(), (unsigned int)mVertices.size() * sizeof(Vertex));
 
 		mIndexBuffer = IndexBuffer::Create();
-		mIndexBuffer->SetData(mIndices.data(), mIndices.size() * sizeof(Index));
+		mIndexBuffer->SetData(mIndices.data(), (unsigned int)mIndices.size() * sizeof(Index));
 
 		mScene = Scene;
 	}
@@ -231,13 +231,18 @@ namespace Crystal
 		ImGui::Begin("Mesh Debug");
 		if (ImGui::CollapsingHeader(mFilePath.c_str(), nullptr, ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			if (ImGui::CollapsingHeader("Animation", nullptr, ImGuiTreeNodeFlags_DefaultOpen))
+			if (mScene->HasAnimations())
 			{
-				if (ImGui::Button(mAnimationPlaying ? "Pause" : "Play"))
-					mAnimationPlaying = !mAnimationPlaying;
+				if (ImGui::CollapsingHeader("Animation", nullptr, ImGuiTreeNodeFlags_DefaultOpen))
+				{
+					if (ImGui::Button(mAnimationPlaying ? "Pause" : "Play"))
+					{
+						mAnimationPlaying = !mAnimationPlaying;
+					}
 
-				ImGui::SliderFloat("##AnimationTime", &mAnimationTime, 0.0f, (float)mScene->mAnimations[0]->mDuration);
-				ImGui::DragFloat("Time Scale", &mTimeMultiplier, 0.05f, 0.0f, 10.0f);
+					ImGui::SliderFloat("##AnimationTime", &mAnimationTime, 0.0f, (float)mScene->mAnimations[0]->mDuration);
+					ImGui::DragFloat("Time Scale", &mTimeMultiplier, 0.05f, 0.0f, 10.0f);
+				}
 			}
 		}
 

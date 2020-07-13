@@ -83,7 +83,7 @@ namespace Crystal
 
 		if (OutPosition)
 			*OutPosition = End;
-		uint32_t Length = End - Str + 1;
+		__int64 Length = End - Str + 1;
 		return std::string(Str, Length);
 	}
 
@@ -95,7 +95,7 @@ namespace Crystal
 
 		if (OutPosition)
 			*OutPosition = End;
-		uint32_t length = End - Str + 1;
+		__int64 length = End - Str + 1;
 		return std::string(Str, length);
 	}
 
@@ -118,6 +118,9 @@ namespace Crystal
 	{	
 		size_t Found = FilePath.find_last_of("/\\");
 		mName = Found != std::string::npos ? FilePath.substr(Found + 1) : FilePath;
+		Found = mName.find_last_of(".");
+		mName = Found != std::string::npos ? mName.substr(0, Found) : mName;
+
 		Reload();
 	}
 

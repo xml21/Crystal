@@ -44,11 +44,11 @@ public:
 		mSimplePBRShader = Crystal::Shader::Create("Assets/Shaders/simplepbr.glsl");
 		mQuadShader = Crystal::Shader::Create("Assets/Shaders/quad.glsl");
 		mHDRShader = Crystal::Shader::Create("Assets/Shaders/hdr.glsl");
-		mGridShader = Crystal::Shader::Create("Assets/shaders/Grid.glsl");
-		mMesh = std::make_shared<Crystal::Mesh>("Assets/models/m1911/m1911.fbx");
+		mGridShader = Crystal::Shader::Create("Assets/Shaders/Grid.glsl");
+		mMesh = std::make_shared<Crystal::Mesh>("Assets/Models/m1911/m1911.fbx");
 
-		mSphereMesh = std::make_shared<Crystal::Mesh>("Assets/models/Sphere1m.fbx");
-		mPlaneMesh = std::make_shared<Crystal::Mesh>("Assets/models/Plane1m.obj");
+		mSphereMesh = std::make_shared<Crystal::Mesh>("Assets/Models/Sphere1m.fbx");
+		mPlaneMesh = std::make_shared<Crystal::Mesh>("Assets/Models/Plane1m.obj");
 
 		// Editor
 		mCheckerboardTex = Crystal::Texture2D::Create("Assets/Editor/Checkerboard.tga");
@@ -165,7 +165,7 @@ public:
 		mPBRMaterial->Set("u_EnvMapRotation", mEnvMapRotation);
 		mPBRMaterial->Set("u_EnvRadianceTex", mEnvironmentCubeMap);
 		mPBRMaterial->Set("u_EnvIrradianceTex", mEnvironmentIrradiance);
-		mPBRMaterial->Set("u_BRDFLUTTexture", mBRDFLUT);
+		//mPBRMaterial->Set("u_BRDFLUTTexture", mBRDFLUT);
 
 		if (mAlbedoInput.TextureMap)
 			mPBRMaterial->Set("u_AlbedoTexture", mAlbedoInput.TextureMap);
@@ -175,6 +175,14 @@ public:
 			mPBRMaterial->Set("u_MetalnessTexture", mMetalnessInput.TextureMap);
 		if (mRoughnessInput.TextureMap)
 			mPBRMaterial->Set("u_RoughnessTexture", mRoughnessInput.TextureMap);
+
+		mGridShader->Bind();
+		mGridShader->SetMat4("u_MVP", ViewProjection * glm::scale(glm::mat4(1.0f), glm::vec3(16.0f)));
+		mGridShader->SetFloat("u_Scale", mGridScale);
+		mGridShader->SetFloat("u_Res", m_GridSize);
+
+		//We always want to render grid plane first not to override rendering other actors
+		mPlaneMesh->Render(DeltaTime, mGridShader);
 
 		if (mScene == Scene::Spheres)
 		{
@@ -195,10 +203,12 @@ public:
 			if (mMesh)
 			{
 				mPBRMaterial->Bind();
-				mSimplePBRShader->SetMat4("u_ViewProjectionMatrix", ViewProjection);
-				mSimplePBRShader->SetMat4("u_ModelMatrix", scale(mat4(1.0f), vec3(mMeshScale)));
-				mSimplePBRShader->SetFloat("u_EnvMapRotation", mEnvMapRotation);
 
+				mSimplePBRShader->SetMat4("u_ViewProjectionMatrix", ViewProjection);
+				//mSimplePBRShader->SetMat4("u_ModelMatrix", mat4(1.0f), vec3(mMeshScale)));
+				mSimplePBRShader->SetMat4("u_ModelMatrix", scale(translate(mat4(1.0f), vec3(0.0f, 0.1f, 0.0f)), vec3(mMeshScale)));
+				mSimplePBRShader->SetFloat("u_EnvMapRotation", mEnvMapRotation);
+			
 				mMesh->Render(DeltaTime, mSimplePBRShader);
 			}
 		}
